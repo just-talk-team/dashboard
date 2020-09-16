@@ -7,7 +7,7 @@
 	<groupId>com.dashboard-just-talk</groupId>
 	<artifactId>just-talk-dashboard</artifactId>
 	<version>1.0.0</version>
-	<name>just-talk-dashboard</name>
+	<name>dashboard-just-talk</name>
 	<description>Proyecto Web API con Spring en backend, y VueJs en el frontend + Jenkins </description>
 	<packaging>pom</packaging>
 
