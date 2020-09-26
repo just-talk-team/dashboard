@@ -30,6 +30,7 @@ public class AccountController {
 
     @GetMapping("/{id}")
     public Account getAccount(@PathVariable int id) {
+
         return accountService.getAccountById(id);
     }
 
@@ -40,6 +41,7 @@ public class AccountController {
 
     @DeleteMapping("/{id}")
     public void deleteAccount(@PathVariable int id) {
+
         accountService.deleteAccount(id);
     }
 }

@@ -36,11 +36,11 @@ public class AccountServiceControllerTest extends AbstractTest {
     public void createAccount() throws Exception {
         String uri = "http://localhost:9191/dashboard/api/accounts";
         Account account = new Account();
-        account.setId(1);
+        account.setId(10);
         account.setFirstname("Viviana");
         account.setLastname("Angeles");
         account.setEmail("angelesviviana@gmail.com");
-        //[{"id":1,"firstname":"aaa","lastname":"bb","email":"abc@gmail.com","birthdate":"2010-05-05T00:00:00.000+0000","active":true}]
+        
         String inputJson = super.mapToJson(account);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -50,12 +50,12 @@ public class AccountServiceControllerTest extends AbstractTest {
         assertEquals(200, status);
     }
 
-    //Actualiza-Modifica el nombre del id #2
+    //Actualiza-Modifica el nombre del id #11
     @Test
     public void updateAccount() throws Exception {
-        String uri = "http://localhost:9191/dashboard/api/accounts/9";
+        String uri = "http://localhost:9191/dashboard/api/accounts/11";
         Account account = new Account();
-        account.setId(8);
+        account.setId(11);
         account.setFirstname("Paola");
         account.setLastname("Angeles");
 
@@ -68,10 +68,10 @@ public class AccountServiceControllerTest extends AbstractTest {
         assertEquals(200, status);
     }
 
-    //Borra la cuenta que tiene el id #3
+    //Borra la cuenta que tiene el id #12
     @Test
     public void deleteAccount() throws Exception {
-        String uri = "http://localhost:9191/dashboard/api/accounts/10";
+        String uri = "http://localhost:9191/dashboard/api/accounts/12";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
