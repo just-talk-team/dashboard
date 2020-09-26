@@ -1,4 +1,4 @@
-# crud
+# JUST TALK DASHBOARD
 
 ## Project setup
 ```
