@@ -1,9 +1,8 @@
 pipeline {
-    agent any
-
-    tools {
-        maven '3.6.3',
-        jdk 'jdk1.8.0_221'
+    agent { 
+        docker { 
+            image 'maven:3.3.3' 
+        } 
     }
 
     options {
