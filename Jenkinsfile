@@ -1,10 +1,12 @@
 pipeline {
-    agent { 
-        dockerfile true
+    agent any
+
+    tools {
+        maven '3.6.3'
     }
 
     options {
-        timeout(time: 15, unit: 'MINUTES')
+        timeout(time: 10, unit: 'MINUTES')
     }
 
     stages {
