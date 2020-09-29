@@ -24,11 +24,11 @@ public class AdminUserControllerTest {
         final String password = "1234567";
         final String expectedResult = "Usuario invalido :)";
 
-        /*when(adminUserService.login(username,password)).thenReturn(true);
+        when(adminUserService.login(username,password)).thenReturn(true);
         final String result = adminUserControllerUnderTest.login(username, password);
 
         assertEquals(expectedResult, result);
-        verify(adminUserService).login(username,password);*/
+        verify(adminUserService).login(username,password);
     }
 
 }
