@@ -17,7 +17,7 @@
             <v-text-field
               v-model="search"
               append-icon="mdi-magnify"
-              label="Search"
+              label="Buscar"
               single-line
               hide-details
             ></v-text-field>
@@ -26,7 +26,7 @@
           <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="600px">
             <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">New Account</v-btn>
+              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">Nueva Cuenta</v-btn>
             </template>
             <v-card>
               <v-card-title>
@@ -65,7 +65,7 @@
                         </template>
                         <v-date-picker v-model="editedItem.birthdate" scrollable>
                           <v-spacer></v-spacer>
-                          <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
+                          <v-btn text color="primary" @click="modal = false">Cancelar</v-btn>
                           <v-btn text color="primary" @click="$refs.dialog.save(editedItem.birthdate)">OK</v-btn>
                         </v-date-picker>
                       </v-dialog>
@@ -84,8 +84,8 @@
 
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
-                <v-btn color="blue darken-1" text @click="save">Save</v-btn>
+                <v-btn color="blue darken-1" text @click="close">Cancelar</v-btn>
+                <v-btn color="blue darken-1" text @click="save">Guardar</v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -113,30 +113,30 @@ export default {
       menu2: false,
     name: '',
       nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 30) || 'Name must be less than 30 characters',
+        v => !!v || 'Nombre es requerido',
+        v => (v && v.length <= 30) || 'Debe contener menos de 30 caracteres',
       ],
     rules: {
-          required: value => !!value || 'Required.',
-          counter: value => value.length <= 20 || 'Max 20 characters',
+          required: value => !!value || 'Campo requerido',
+          counter: value => value.length <= 20 || 'Max 20 caracteres',
           email: value => {
             const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            return pattern.test(value) || 'Invalid e-mail.'
+            return pattern.test(value) || 'Correo no válido'
       },
     },
     search: "",
     dialog: false,
     headers: [
       {
-        text: "First Name",
+        text: "Nombre",
         align: "start",
         value: "firstname"
       },
-      { text: "Last Name", value: "lastname" },
-      { text: "Email", value: "email" },
-      { text: "Birthdate", value: "birthdate" },
-      { text: "Active", value: "active" },
-      { text: "Actions", value: "actions" }
+      { text: "Apellido", value: "lastname" },
+      { text: "Correo", value: "email" },
+      { text: "Fecha de nacimiento", value: "birthdate" },
+      { text: "Activeo", value: "active" },
+      { text: "Actiones", value: "actions" }
     ],
     accounts: [],
     editedIndex: -1,
@@ -158,7 +158,7 @@ export default {
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? "New Account" : "Edit Account";
+      return this.editedIndex === -1 ? "Nueva Cuenta" : "Editar Cuenta";
     }
   },
 
@@ -196,7 +196,7 @@ export default {
     deleteItem(item) {
       const index = this.accounts.indexOf(item);
       if (
-        confirm("Are you sure you want to delete this item?") &&
+        confirm("¿Está seguro de borrar ese usuario?") &&
         this.accounts.splice(index, 1)
       ) {
         this.axios
@@ -206,7 +206,7 @@ export default {
             if (res.data) {
               this.fetchAccounts();
             } else {
-              console.log("Unsuccesssful Delete");
+              console.log("No se puedo borrar");
             }
           });
       }
@@ -222,7 +222,7 @@ export default {
 
     save() {
       if (this.editedIndex > -1) {
-        console.log("edited data");
+        console.log("datos actualizados");
         console.log(this.editedItem);
 
         this.axios
@@ -235,13 +235,12 @@ export default {
             active: this.editedItem.active
           })
           .then(res => {
-            console.log("Updated Successfully");
-            console.log("Updated Data", res.data);
+            console.log("Actualizado", res.data);
           });
 
         Object.assign(this.accounts[this.editedIndex], this.editedItem);
       } else {
-        console.log("created data");
+        console.log("datos creados");
         console.log(this.editedItem);
 
         this.axios
@@ -254,8 +253,7 @@ export default {
             active: this.editedItem.active
           })
           .then(res => {
-            console.log("Added Successfully");
-            console.log("Added Data", res.data);
+            console.log("Datos agregados", res.data);
             this.accounts.push(res.data);
           });
       }

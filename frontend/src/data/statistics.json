@@ -1,18 +1,18 @@
 [
   {
-    "title": "Employees",
+    "title": "Usuarios Activos",
     "value": "65"
   },
   {
-    "title": "Ream Sold",
-    "value": "983,000"
+    "title": "Descargas Realizadas",
+    "value": "98"
   },
   {
-    "title": "Rating",
+    "title": "Puntuación",
     "value": "4.5"
   },
   {
-    "title": "Revenue",
-    "value": "$2.3M"
+    "title": "Ventas",
+    "value": "S/.0.00"
   }
 ]
