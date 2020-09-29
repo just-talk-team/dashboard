@@ -1,7 +1,7 @@
 <template>
 	<v-app>
 		<v-app-bar app color="primary" dark>
-			<v-toolbar-title>Vuetify Dashboard</v-toolbar-title>
+			<v-toolbar-title>Just Talk Dashboard</v-toolbar-title>
 			<v-spacer></v-spacer>
 			<v-btn
 				v-for="link in links"
@@ -12,7 +12,7 @@
 			>
 				{{ link.label }}
 			</v-btn>
-			<v-btn @click="toggleTheme" text rounded>Toggle Theme</v-btn>
+			<v-btn @click="toggleTheme" text rounded>Modo Oscuro</v-btn>
 		</v-app-bar>
 		<v-content>
 			<router-view></router-view>
@@ -31,7 +31,7 @@
 					{{ link.label }}
 				</v-btn>
 				<v-flex primary lighten-2 py-4 text-center white--text xs12>
-					{{ new Date().getFullYear() }} — <strong>Vuetify Dashboard</strong>
+					{{ new Date().getFullYear() }} — <strong>Just Talk Dashboard</strong>
 				</v-flex>
 			</v-layout>
 		</v-footer>
@@ -45,11 +45,11 @@ export default {
 		return {
 			links: [
 				{
-					label: 'Home',
+					label: 'Inicio',
 					url: '/'
 				},
 				{
-					label: 'Login',
+					label: 'Iniciar sesión',
 					url: '/login'
 				},
 				{
@@ -57,8 +57,8 @@ export default {
 					url: '/dashboard'
 				},
 				{
-					label: 'Signup',
-					url: '/signup'
+					label: 'Registro',
+					url: '/datatable'
 				}
 			]
 		}

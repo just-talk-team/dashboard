@@ -1,7 +1,7 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="employees"
+    :items="users"
     :items-per-page="5"
     class="elevation-1"
     @click:row="selectRow"
@@ -11,29 +11,29 @@
 
 <script>
 export default {
-  name: 'EmployeesTable',
+  name: 'UsersTable',
   props: {
-    employees: {
+    users: {
       type: Array,
       required: true
     }
   },
   data: () => ({
     headers: [
-      { text: 'Employee ID', value: 'id' },
-      { text: 'Name', value: 'name' },
-      { text: 'Position Title', value: 'title' },
-      { text: 'Salary', value: 'salary' }
+      { text: 'ID', value: 'id' },
+      { text: 'Usuario', value: 'name' },
+      { text: 'Género', value: 'title' },
+      { text: 'Edad', value: 'age' }
     ]
   }),
   methods: {
     selectRow(event) {
-      const employee = {
+      const user = {
         name: event.name,
         title: event.title
       }
 
-      this.$emit('select-employee', employee)
+      this.$emit('select-user', user)
     }
   }
 }
