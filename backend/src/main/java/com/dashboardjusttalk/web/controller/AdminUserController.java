@@ -33,7 +33,7 @@ public class AdminUserController {
         if(adminUserService.login(username,password)){
             return "Usuario valido :)";
         }
-        return "Usuario invalido :(";
+        return null;
     }
 
 }
