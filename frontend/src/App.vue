@@ -52,14 +52,6 @@ export default {
 					label: 'Iniciar sesión',
 					url: '/login'
 				},
-				{
-					label: 'Dashboard',
-					url: '/dashboard'
-				},
-				{
-					label: 'Registro',
-					url: '/datatable'
-				}
 			]
 		}
 	},

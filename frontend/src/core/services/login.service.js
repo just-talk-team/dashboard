@@ -7,11 +7,12 @@ static async auth(username, password) {
         `${environments.api}/dashboard/api/login/${username}/${password}`);
 }
 
-  static getUserAuth() {
+static getUserAuth() {
     return JSON.parse(sessionStorage.getItem("user"));
-  }
+}
 
-  static saveUserAuth(userAuth) {
+static saveUserAuth(userAuth) {
     sessionStorage.setItem("user", JSON.stringify(userAuth));
-  }
+}
+
 }
