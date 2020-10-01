@@ -2,6 +2,8 @@ package com.dashboardjusttalk.repository;
 
 import com.dashboardjusttalk.model.Result;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ResultRepository extends JpaRepository<Result,Integer> {
+@Repository
+public interface ResultRepository extends JpaRepository<Result , Integer> {
 }

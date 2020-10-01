@@ -1,4 +1,4 @@
-package com.dashboardjusttalk.web.config;
+package com.dashboardjusttalk.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +18,12 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.dashboardjusttalk.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.dashboardjusttalk.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
     }
-
+    @Bean
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Just Talk")
@@ -33,4 +33,5 @@ public class SwaggerConfig {
                 .build();
     }
 
-}
+    }
+

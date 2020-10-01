@@ -3,7 +3,7 @@ package com.dashboardjusttalk.AccountCrudTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import com.dashboardjusttalk.persistence.entity.Account;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.MediaType;
@@ -18,7 +18,7 @@ public class AccountServiceControllerTest extends AbstractTest {
     }
 
     //Obtener la lista de todas las cuentas
-    @Test
+    /*@Test
     public void getAccountsList() throws Exception {
         String uri = "http://localhost:9191/dashboard/api/accounts";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
@@ -75,6 +75,6 @@ public class AccountServiceControllerTest extends AbstractTest {
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
-    }
+    }*/
 
 }
