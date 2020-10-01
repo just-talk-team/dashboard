@@ -20,11 +20,8 @@ public class Account {
     @Id
     @GeneratedValue
     private int id;
-
     private String firstname;
-
     private String lastname;
-
     private String email;
     private Date birthdate;
     private Boolean active=true;
