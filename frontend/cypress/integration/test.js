@@ -24,7 +24,7 @@ describe('Testeando las rutas correctas', () => {
   it('Visita la página de contactar a soporte', () => {
     cy.visit('/report')
     cy.wait(2000)
-    cy.contains('h1', 'Registro y totalidad de usuarios')
+    cy.contains('h1', 'Reportar un problema')
   })
 
   it('Visita la página de la tabla de usuarios', () => {

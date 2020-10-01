@@ -55,28 +55,19 @@ import LoginService from  "../core/services/login.service";
 			async auth() {
 				try{
 				await LoginService.auth(this.$data.user, this.$data.password);
-					console.log("logueado");
-		
-	
+					//console.log("logueado");
 					this.$router.push("/dashboard");
 				} catch (error){
 					if (this.user.length<1 || this.password.length<1){
 						confirm("Verificar que el campo usuario y/o contraseña no este vacío.");
-						console.log("campos vacios");
+						//console.log("campos vacios");
 					}
 					else
 						confirm("Usuario o contraseña incorrecto.") 
-						console.log("usuario no válido")
+						//console.log("usuario no válido")
 				}
 			},
 
-			 computed: {
-    			error () {
-      			return this.user.trim().length < 7
-        		? 'Por favor ingrese un nombre de usuario más largo'
-        		: ''
-    			}
-  			}
 		}
 	}
 	
