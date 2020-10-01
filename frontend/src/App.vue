@@ -41,8 +41,6 @@
 <script>
 export default {
 	name: 'App',
-	logapp: Boolean,
-
 	data() {
 		return {
 			links: [

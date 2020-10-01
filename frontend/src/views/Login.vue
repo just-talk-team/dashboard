@@ -37,16 +37,21 @@ import LoginService from  "../core/services/login.service";
     export default {
 		name: 'LoginPage',
 	
-		
         data: function() {
             return {
 				showPassword: false,
-				user: "",
-				password: "",
+				user: '',
+				password: '',
+				userActive: false
 		
             };
         },
         methods: {
+			
+			activeUser: function(){
+				this.userActive = true;
+			},
+
 			async auth() {
 				try{
 				await LoginService.auth(this.$data.user, this.$data.password);
@@ -63,7 +68,15 @@ import LoginService from  "../core/services/login.service";
 						confirm("Usuario o contraseña incorrecto.") 
 						console.log("usuario no válido")
 				}
-			}
+			},
+
+			 computed: {
+    			error () {
+      			return this.user.trim().length < 7
+        		? 'Por favor ingrese un nombre de usuario más largo'
+        		: ''
+    			}
+  			}
 		}
 	}
 	
