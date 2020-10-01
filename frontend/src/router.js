@@ -33,9 +33,9 @@ export default new Router({
 			component: () => import('./views/Dashboard.vue')
 		},
 		{
-			path: '/signup',
-			name: 'signup',
-			component: () => import('./views/Signup.vue')
+			path: '/report',
+			name: 'report',
+			component: () => import('./views/Report.vue')
 		},
 		{
 			path: '/datatable',

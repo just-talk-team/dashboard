@@ -1,6 +1,6 @@
 <template>
   <div class="datatable">
-    
+    <h1>Registro y totalidad de usuarios</h1>
     <v-data-table
       :headers="headers"
       :items="accounts"
@@ -37,13 +37,13 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="6" md="4">
-                      <v-text-field v-model="editedItem.firstname" :counter="30" :rules="nameRules" label="First Name"></v-text-field>
+                      <v-text-field v-model="editedItem.firstname" :counter="30" :rules="nameRules" label="Nombre"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4">
-                      <v-text-field v-model="editedItem.lastname" :counter="30" :rules="nameRules" label="Last Name"></v-text-field>
+                      <v-text-field v-model="editedItem.lastname" :counter="30" :rules="nameRules" label="Apellido"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4">
-                      <v-text-field v-model="editedItem.email"  :rules="[rules.required, rules.email]" label="Email"></v-text-field>
+                      <v-text-field v-model="editedItem.email"  :rules="[rules.required, rules.email]" label="Correo"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4">
                       <v-dialog
@@ -56,8 +56,7 @@
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
                             v-model="editedItem.birthdate"
-                            label="Birtdate"
-                            prepend-icon="event"
+                            label="Fecha de Nacimiento"
                             readonly
                             v-bind="attrs"
                             v-on="on"
@@ -135,7 +134,7 @@ export default {
       { text: "Apellido", value: "lastname" },
       { text: "Correo", value: "email" },
       { text: "Fecha de nacimiento", value: "birthdate" },
-      { text: "Activeo", value: "active" },
+      { text: "Activo", value: "active" },
       { text: "Actiones", value: "actions" }
     ],
     accounts: [],

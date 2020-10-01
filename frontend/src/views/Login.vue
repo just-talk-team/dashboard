@@ -23,7 +23,7 @@
 		</v-card-text>
 		<v-divider></v-divider>
 		<v-card-actions>
-			<v-btn to="/signup" color="success">Contraseña Olvidada</v-btn>
+			<v-btn to="/report" color="success">Contactar Soporte</v-btn>
 			<v-spacer></v-spacer>
 			<v-btn color="info" @click="auth">Iniciar Sesión</v-btn>
 		</v-card-actions>
@@ -51,7 +51,13 @@ import LoginService from  "../core/services/login.service";
 					console.log("logueado")
 					this.$router.push("/dashboard");
 				} catch (error){
-					console.log("usuario invalido")
+					if (this.username.length<1 || this.password.length<1){
+						confirm("Verificar que el campo usuario y/o contraseña no este vacío.");
+						console.log("campos vacios");
+					}
+					else
+						confirm("Usuario o contraseña incorrecto.") 
+						console.log("usuario no válido")
 				}
 			}
 		}
