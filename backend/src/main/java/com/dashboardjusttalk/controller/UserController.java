@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/dashboard/api")
 @RequiredArgsConstructor
 public class UserController {
     @Autowired
     private IUserService userService;
 
-    @PostMapping("user")
+    @PostMapping("user/login")
     public ResponseEntity<?> ValidateLogin(@RequestBody UserLoginDto userLoginDto) {
         try {
             return ResponseEntity.status(200).body(userService.DashboardAccess(userLoginDto.user, userLoginDto.password));
@@ -32,7 +32,7 @@ public class UserController {
             return ResponseEntity.status(400).body(exception.exceptionDto);
         }
     }
-    @PostMapping("user/registration")
+    @PostMapping("user/signup")
     public ResponseEntity<?> Registration(@RequestBody UserRegistrationDto userRegistrationDto){
         try{
             return ResponseEntity.status(200).body(userService.Registration(userRegistrationDto));
