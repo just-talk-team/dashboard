@@ -10,7 +10,6 @@
             <v-autocomplete label="¿Qué navegador usa?" :items="browsers"></v-autocomplete>
             <v-file-input label="Adjunte captura de pantalla del error"></v-file-input>
             <v-text-field label="Detalle su reporte" ></v-text-field>
-            <!--<v-date-picker v-model="birthday"></v-date-picker>-->
             <v-checkbox
               label="Declaro que los datos enviados son reales y no han sido manipulados."
               v-model="agreeToTerms"

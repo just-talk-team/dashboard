@@ -8,7 +8,7 @@
 				<v-text-field 
 					label="Usuario" 
 					type= "text"
-					v-model="username" 
+					v-model="user" 
 					prepend-icon="mdi-account-circle" />
 				
 				<v-text-field
@@ -40,18 +40,18 @@ import LoginService from  "../core/services/login.service";
         data: function() {
             return {
 				showPassword: false,
-				username: "",
+				user: "",
 				password: ""
             };
         },
         methods: {
 			async auth() {
 				try{
-				await LoginService.auth(this.$data.username, this.$data.password);
+				await LoginService.auth(this.$data.user, this.$data.password);
 					console.log("logueado")
 					this.$router.push("/dashboard");
 				} catch (error){
-					if (this.username.length<1 || this.password.length<1){
+					if (this.user.length<1 || this.password.length<1){
 						confirm("Verificar que el campo usuario y/o contraseña no este vacío.");
 						console.log("campos vacios");
 					}
