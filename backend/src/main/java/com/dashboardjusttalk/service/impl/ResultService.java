@@ -16,10 +16,11 @@ public class ResultService implements IResultService {
     @Autowired
     private ModelMapper modelMapper = new ModelMapper();
     @Override
-    public void InsertResult(ResultInsertionDto resultInsertionDto) throws ResultInsertionFailedException{
+    public boolean InsertResult(ResultInsertionDto resultInsertionDto) throws ResultInsertionFailedException{
         try{
             Result newEntry = modelMapper.map(resultInsertionDto, Result.class);
             resultRepository.save(newEntry);
+            return true;
         }catch(Exception exception){
             throw new ResultInsertionFailedException();
         }
