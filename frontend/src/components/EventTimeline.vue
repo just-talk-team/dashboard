@@ -5,8 +5,7 @@
       :key="i"
       :color="item.color"
       :icon="item.icon"
-      fill-dot
-    >
+      fill-dot >
       <v-card :color="item.color" dark>
         <v-card-title class="title pt-3 pb-3">
           <h3 class="title">{{ item.title }}</h3>
