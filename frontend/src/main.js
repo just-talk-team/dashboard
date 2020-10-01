@@ -7,12 +7,11 @@ import VueAxios from 'vue-axios'
 import moment from 'moment'
 
 
-
 Vue.config.productionTip = false
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 Vue.prototype.moment = moment
 
-Vue.use(moment);
+Vue.use(vuetify);
 Vue.use(VueAxios, axios)
 
 

@@ -48,8 +48,8 @@ export default {
 					label: 'Inicio',
 					url: '/'
 				},
-				{
-					label: 'Iniciar sesión',
+				{ 
+					label: "Iniciar Sesión",
 					url: '/login'
 				},
 			]

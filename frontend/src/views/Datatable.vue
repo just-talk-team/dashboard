@@ -1,6 +1,6 @@
 <template>
   <div class="datatable">
-    <h1>Registro y totalidad de usuarios</h1>
+    <h1 class="text-center" >Registro de Usuarios</h1>
     <v-data-table
       :headers="headers"
       :items="accounts"
@@ -95,7 +95,7 @@
         <v-icon small color="red" @click="deleteItem(item)">mdi-delete</v-icon>
       </template>
       <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize">Reset</v-btn>
+        <v-btn color="primary" @click="initialize">Actualizar</v-btn>
       </template>
     </v-data-table>
   </div>
@@ -176,12 +176,12 @@ export default {
       this.axios
         .get("http://localhost:9191/dashboard/api/accounts")
         .then(res => {
-          console.log(res.data);
+          //console.log(res.data);
           this.accounts = res.data;
         })
-        .catch(err => {
-          console.log(err.res);
-        });
+        //.catch(err => {
+          //console.log(err.res);
+        //});
     },
     initialize() {
       this.fetchAccounts();
@@ -201,11 +201,11 @@ export default {
         this.axios
           .delete("http://localhost:9191/dashboard/api/accounts/"+ item.id)
           .then(res => {
-            console.log(res.data);
+            //console.log(res.data);
             if (res.data) {
               this.fetchAccounts();
             } else {
-              console.log("No se puedo borrar");
+              //console.log("No se puedo borrar");
             }
           });
       }
@@ -221,8 +221,8 @@ export default {
 
     save() {
       if (this.editedIndex > -1) {
-        console.log("datos actualizados");
-        console.log(this.editedItem);
+        //console.log("datos actualizados");
+        //console.log(this.editedItem);
 
         this.axios
           .put("http://localhost:9191/dashboard/api/accounts/"+this.editedItem.id, {
@@ -233,14 +233,14 @@ export default {
             birthdate: this.editedItem.birthdate,
             active: this.editedItem.active
           })
-          .then(res => {
-            console.log("Actualizado", res.data);
-          });
+          //.then(res => {
+            //console.log("Actualizado", res.data);
+          //});
 
         Object.assign(this.accounts[this.editedIndex], this.editedItem);
       } else {
-        console.log("datos creados");
-        console.log(this.editedItem);
+        //console.log("datos creados");
+        //console.log(this.editedItem);
 
         this.axios
           .post("http://localhost:9191/dashboard/api/accounts", {
@@ -252,7 +252,7 @@ export default {
             active: this.editedItem.active
           })
           .then(res => {
-            console.log("Datos agregados", res.data);
+            //console.log("Datos agregados", res.data);
             this.accounts.push(res.data);
           });
       }

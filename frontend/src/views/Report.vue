@@ -3,14 +3,13 @@
     <v-container>
       <v-row>
         <v-col>
-          <h1 justify-center>Reportar un problema</h1>
+          <h1 class="text-center">Reportar un problema</h1>
           <div></div>
           <v-form ref="signupForm" v-model="formValidity">
             <v-text-field label="Correo" type="email" v-model="email" :rules="emailRules" required></v-text-field>
             <v-autocomplete label="¿Qué navegador usa?" :items="browsers"></v-autocomplete>
             <v-file-input label="Adjunte captura de pantalla del error"></v-file-input>
             <v-text-field label="Detalle su reporte" ></v-text-field>
-            <!--<v-date-picker v-model="birthday"></v-date-picker>-->
             <v-checkbox
               label="Declaro que los datos enviados son reales y no han sido manipulados."
               v-model="agreeToTerms"
