@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col>
-          <h1 justify-center>Reportar un problema</h1>
+          <h1 class="text-center">Reportar un problema</h1>
           <div></div>
           <v-form ref="signupForm" v-model="formValidity">
             <v-text-field label="Correo" type="email" v-model="email" :rules="emailRules" required></v-text-field>

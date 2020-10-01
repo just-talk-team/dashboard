@@ -36,19 +36,23 @@ import LoginService from  "../core/services/login.service";
 
     export default {
 		name: 'LoginPage',
+	
 		
         data: function() {
             return {
 				showPassword: false,
 				user: "",
-				password: ""
+				password: "",
+		
             };
         },
         methods: {
 			async auth() {
 				try{
 				await LoginService.auth(this.$data.user, this.$data.password);
-					console.log("logueado")
+					console.log("logueado");
+		
+	
 					this.$router.push("/dashboard");
 				} catch (error){
 					if (this.user.length<1 || this.password.length<1){

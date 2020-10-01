@@ -7,13 +7,13 @@
   },
   {
     "title": "Duración de Chats",
-    "sales": [25, 23, 33, 28, 23],
+    "sales": [25, 23, 33, 28, 43],
     "color": "teal",
     "labels": ["1min", "2min", "3min", "4min", "5min"]
   },
   {
-    "title": "Usuarios Regisrados",
-    "sales": [21, 24, 28, 30],
+    "title": "Usuarios Registrados",
+    "sales": [21, 24, 27, 31],
     "color": "green",
     "labels": ["Sem 1", "Sem 2", "Sem 3", "Sem 4"]
   }

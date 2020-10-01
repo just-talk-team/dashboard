@@ -41,6 +41,8 @@
 <script>
 export default {
 	name: 'App',
+	logapp: Boolean,
+
 	data() {
 		return {
 			links: [
@@ -48,8 +50,8 @@ export default {
 					label: 'Inicio',
 					url: '/'
 				},
-				{
-					label: 'Iniciar sesión',
+				{ 
+					label: "Iniciar Sesión",
 					url: '/login'
 				},
 			]
