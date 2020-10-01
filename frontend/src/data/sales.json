@@ -13,8 +13,8 @@
   },
   {
     "title": "Usuarios Registrados",
-    "sales": [21, 24, 27, 31],
+    "sales": [21, 24, 27, 31, 44, 20, 34, 34, 22, 29, 33, 30],
     "color": "green",
-    "labels": ["Sem 1", "Sem 2", "Sem 3", "Sem 4"]
+    "labels": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
   }
 ]

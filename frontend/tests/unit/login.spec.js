@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import User from '@/views/User.vue'
+import LoginPage from '@/views/Login.vue'
 
 test('Valida que los campos de logeo no esten vacios', () => {
   // renderiza el componente
-  const wrapper = shallowMount(User)
+  const wrapper = shallowMount(LoginPage)
 
   // no debe permitir que `username` tenga menos de 5 caracteres, excluye los espacios en blanco
   wrapper.setData({ user: ' '.repeat(5) })
