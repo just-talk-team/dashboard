@@ -1,6 +1,6 @@
 <template>
   <div class="datatable">
-    <h1>Registro y totalidad de usuarios</h1>
+    <h1 class="text-center" >Registro de Usuarios</h1>
     <v-data-table
       :headers="headers"
       :items="accounts"
@@ -95,7 +95,7 @@
         <v-icon small color="red" @click="deleteItem(item)">mdi-delete</v-icon>
       </template>
       <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize">Reset</v-btn>
+        <v-btn color="primary" @click="initialize">Actualizar</v-btn>
       </template>
     </v-data-table>
   </div>

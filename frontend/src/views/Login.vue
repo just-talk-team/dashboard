@@ -60,7 +60,7 @@ import LoginService from  "../core/services/login.service";
 				} catch (error){
 					if (this.user.length<1 || this.password.length<1){
 						confirm("Verificar que el campo usuario y/o contraseña no este vacío.");
-						//console.log("campos vacios");
+						console.log("campos vacios");
 					}
 					else
 						confirm("Usuario o contraseña incorrecto.") 
