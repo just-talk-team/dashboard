@@ -4,9 +4,11 @@ import com.dashboardjusttalk.Abstract.AbstractTest;
 import com.dashboardjusttalk.Dto.ResultInsertionDto;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Date;
 
