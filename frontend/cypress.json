@@ -1,1 +1,11 @@
-{}
+
+{
+    "baseUrl": "http://localhost:8081",
+    "fileServerFolder": "src",
+    "fixturesFolder": "frontend/cypress/fixtures",
+    "integrationFolder": "frontend/cypress/integration",
+    "pluginsFile": "frontend/cypress/plugins/index.js",
+    "supportFile": "frontend/cypress/support/index.js",
+    "testFiles": "frontend/cypress/integration/features/*.feature"
+    
+  }

@@ -39,9 +39,21 @@
 </template>
 
 <script>
+
+//import MultipleFiltersTable from '@/components/MultipleFiltersTable'
+//import SimplifiedMultipleFiltersTable from '@/components/SimplifiedMultipleFiltersTable'
+
 export default {
 	name: 'App',
+
+//	components: {
+  //    MultipleFiltersTable,
+    //  SimplifiedMultipleFiltersTable
+	//},
+	
+
 	data() {
+		
 		return {
 			links: [
 				{
@@ -49,7 +61,7 @@ export default {
 					url: '/'
 				},
 				{ 
-					label: "Iniciar Sesión",
+					label: "Login",
 					url: '/login'
 				},
 			]
