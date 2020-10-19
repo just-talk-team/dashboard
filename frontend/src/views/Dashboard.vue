@@ -1,78 +1,241 @@
 <template>
   <v-container>
-    <h1 class="text-center">Just Talk Dashboard</h1>
-    <v-row>
-      <v-col v-for="sale in sales" :key="`${sale.title}`" cols="12" md="4">
-        <SalesGraph :sale="sale" />
-      </v-col>
-    </v-row>
+    <br><h1 class="text-center">Just Talk Dashboard</h1><br>
+
+<div class="event-listing">
+    <div class="search-row">
+
+      <div class="field">
+        <label>Fecha Inicio:</label>
+        <input type="date" name="startDate" v-model="filter_sd" @change="filterByDate()" />
+      </div>
+      <div class="field">
+        <label>Fecha Fin:</label>
+        <input type="date" name="endDate" v-model="filter_ed" @change="filterByDate()" />
+      </div>
+
+      <div class="field">
+        <label>Tipo de Usuario:</label>
+        <select
+          v-model="userType"
+          name="userType"
+          @change="getEventsByuserType(userType)">
+          <option name="userType" value="everyone" selected>Todos</option>
+          <option name="userType" value="free">Freemium</option>
+          <option name="userType" value="premium">Premium</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Edad:</label>
+				<v-text-field 
+					label="Desde" 
+					type= "text"
+          pattern="[0-99]"  maxlength="2"
+					v-model="age1"/>
+				<v-text-field
+					label="Hasta"
+          type="text" 
+          pattern="[0-99]"  maxlength="2"
+          v-model="age2"/>
+      </div>
+
+      <div class="field">
+        <label>Duración:</label>
+          <input type="time" name="time">
+      </div>
+
+		<v-card-actions>
+			<v-spacer></v-spacer>
+			<v-btn color="success" @click="analize">Analizar</v-btn>
+		</v-card-actions>
+    </div>
+
+  </div>
 
     <v-row>
       <v-col v-for="statistic in statistics" :key="`${statistic.title}`" cols="6" md="3">
         <StatisticCard :statistic="statistic" />
       </v-col>
     </v-row>
-
     <v-row>
-      <v-col cols="12" md="8">
-        <UsersTable :users="users" @select-user="setUser" />
-      </v-col>
-      <v-col cols="12" md="4">
-        <EventTimeline :timeline="timeline" />
-      </v-col>
     </v-row>
 
     <v-snackbar v-model="snackbar" :left="$vuetify.breakpoint.lgAndUp">
-      Has seleccionado al usuario {{ selectedUser.name }},
-      {{ selectedUser.title }}
+      Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis
       <v-btn color="white" text @click="snackbar = false">Cerrar</v-btn>
     </v-snackbar>
+    
   </v-container>
 </template>
 
 <script>
-import UsersTable from "../components/UsersTable";
-import EventTimeline from "../components/EventTimeline";
-import SalesGraph from "../components/SalesGraph";
 import StatisticCard from "../components/StatisticCard";
-
-import usersData from "../data/users.json";
-import timelineData from "../data/timeline.json";
-import salesData from "../data/sales.json";
+import axios from "axios";
+import moment from "moment";
 import statisticsData from "../data/statistics.json";
 
 export default {
   name: "DashboardPage",
   components: {
-    UsersTable,
-    EventTimeline,
-    SalesGraph,
     StatisticCard
+
   },
+
   data() {
     return {
       loadNewContent: false,
-      users: usersData,
-      sales: salesData,
-      selectedUser: {
-        name: "",
-        title: ""
-      },
       snackbar: false,
       statistics: statisticsData,
-      timeline: timelineData
+      userType: "everyone",
+      filter_sd: "",
+      filter_ed: "",
+      events: []
+
     };
   },
+
+  mounted() {
+    this.getEventsByUserType(this.userType);
+  },
+  filters: {
+    formatDate: function(date) {
+      if (date) {
+        return moment(String(date)).format("MMMM Do YYYY, h:mm:ss a");
+      }
+    }
+  },
+
   methods: {
-    setUser(event) {
-      this.snackbar = true;
-      this.selectedUser.name = event.name;
-      this.selectedUser.title = event.title;
-    },
+
     showMoreContent(entries) {
       this.loadNewContent = (entries[0].isIntersecting)
 
+    },
+
+    getEventsByUserType(userType) {
+      return axios
+        .get(
+          "http://search-api.nfhsnetwork.com/search/events/upcoming?state_association_key=" +
+            userType +
+            "&size=50"
+        )
+        .then(result => {
+          return (this.events = result.data.items);
+        });
+    },
+
+    filterByDate() {
+      this.getEventsByUserType(this.userType).then(events => {
+        this.events = events.filter(event => {
+          var eventStartDate = new Date(event.start_time.substring(0, 10));
+          if (this.filter_sd != "") {
+            var filterStartDate = new Date(this.filter_sd);
+          }
+          if (this.filter_ed != "") {
+            var filterEndDate = new Date(this.filter_ed);
+          }
+
+          if (this.filter_sd == "" && this.filter_ed == "") {
+            return events;
+          } else if (this.filter_sd != "" && this.filter_ed == "") {
+            return eventStartDate >= filterStartDate;
+          } else if (this.filter_sd == "" && this.filter_ed != "") {
+            return eventStartDate <= filterEndDate;
+          } else {
+            return (
+              eventStartDate >= filterStartDate &&
+              eventStartDate <= filterEndDate
+            );
+          }
+        });
+      });
     }
+
   }
 };
 </script>
+
+<style scoped>
+body {
+    overflow: hidden;
+}
+h3 {
+  margin: 40px 0 0;
+}
+a {
+  color: #42b983;
+}
+.event-listing {
+  overflow: hidden;
+}
+.table-wrapper {
+    overflow-x: auto;
+}
+.table-header {
+  border-bottom: 2px #000 solid;
+}
+.search-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #71bbe4;
+  display: block;
+}
+.search-row .field {
+  text-align: center;
+  margin-bottom: 11px;
+}
+.search-row label {
+  color: #2b0404;
+}
+.search-row input,
+.search-row select {
+  width: 120px;
+  height: 30px;
+  padding-left: 15px;
+  margin-left: 10px;
+  background-color: #9ee2fda8;
+}
+.event-table {
+  min-width: 900px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.table-row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.table-row .row-col {
+  padding: 15px 0;
+  text-align: left;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+.table-row .row-col.sm {
+  flex-basis: 15%;
+}
+.table-row .row-col.md {
+  flex-basis: 20%;
+}
+.table-row .row-col.lg {
+  flex-basis: 50%;
+}
+@media (min-width: 576px) {
+  .search-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .search-row .field {
+    margin-bottom: 0px;
+  }
+  .search-row input,
+.search-row select {
+  width: 150px;
+ }
+}
+</style>

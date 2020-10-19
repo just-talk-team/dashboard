@@ -35,22 +35,16 @@
 				</v-flex>
 			</v-layout>
 		</v-footer>
+	
 	</v-app>
 </template>
 
 <script>
 
-//import MultipleFiltersTable from '@/components/MultipleFiltersTable'
-//import SimplifiedMultipleFiltersTable from '@/components/SimplifiedMultipleFiltersTable'
 
 export default {
 	name: 'App',
 
-//	components: {
-  //    MultipleFiltersTable,
-    //  SimplifiedMultipleFiltersTable
-	//},
-	
 
 	data() {
 		
