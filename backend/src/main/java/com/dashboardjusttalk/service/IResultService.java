@@ -5,4 +5,5 @@ import com.dashboardjusttalk.Exception.ResultInsertionFailedException;
 
 public interface IResultService {
     boolean InsertResult(ResultInsertionDto resultInsertionDto)throws ResultInsertionFailedException;
+
 }

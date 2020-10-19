@@ -1,16 +1,15 @@
 package com.dashboardjusttalk.controller;
 
 import com.dashboardjusttalk.Dto.ResultInsertionDto;
+import com.dashboardjusttalk.Dto.ResultSearchDto;
 import com.dashboardjusttalk.Exception.ResultInsertionFailedException;
 import com.dashboardjusttalk.service.IResultService;
+import com.dashboardjusttalk.service.impl.ResultService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/dashboard/api")
@@ -29,4 +28,12 @@ public class ResultController {
         }
 
     }
+//    @GetMapping("result")
+//    public ResponseEntity<?> ReadResultsMatched(@RequestBody ResultSearchDto resultSearchDto){
+//        try{
+//            return
+//        }catch (){
+//            return
+//        }
+//    }
 }

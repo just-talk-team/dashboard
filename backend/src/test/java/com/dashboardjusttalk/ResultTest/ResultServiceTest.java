@@ -6,12 +6,12 @@ import org.junit.Test;
 import org.springframework.stereotype.Component;
 
 
-public class ResultServiceTest {
-    private ResultService resultService= new ResultService();
-    @Test
-    public void itShouldRespondEmpty(){
-/*
-        Assert.assertEquals(true,resultService.InsertResult());
-*/
-    }
-}
+//public class ResultServiceTest {
+//    private ResultService resultService= new ResultService();
+//    @Test
+//    public void itShouldRespondEmpty(){
+///*
+//        Assert.assertEquals(true,resultService.InsertResult());
+//*/
+//    }
+//}
