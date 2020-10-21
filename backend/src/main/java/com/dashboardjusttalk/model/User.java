@@ -16,6 +16,7 @@ public class User {
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private String name;
     private String user;
     private String password;

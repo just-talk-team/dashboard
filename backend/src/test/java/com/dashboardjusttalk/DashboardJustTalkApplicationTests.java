@@ -22,7 +22,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 //}
 @RunWith(Cucumber.class)
 @CucumberContextConfiguration
-@CucumberOptions(features = "src/test/java/resources/features", glue = "Steps",publish = true)
+@CucumberOptions(features = "src/test/java/resources/features", glue = "src/test/java/com/dashboardjusttalk/CucumberIntegration/Steps",publish = true)
 public class DashboardJustTalkApplicationTests {
 }
-

@@ -1,5 +1,6 @@
 package com.dashboardjusttalk.CucumberIntegration.Steps;
 
+import com.dashboardjusttalk.CucumberIntegration.SpringIntegrationTest;
 import com.dashboardjusttalk.Dto.UserRegistrationDto;
 import com.dashboardjusttalk.controller.UserController;
 import io.cucumber.java.en.Then;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import static org.junit.Assert.*;
 
-public class registrationToDashboard {
+public class registrationToDashboard  extends SpringIntegrationTest {
 
     @Autowired
     private UserController userController;

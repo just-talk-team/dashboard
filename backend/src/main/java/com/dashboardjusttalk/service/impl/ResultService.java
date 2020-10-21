@@ -1,6 +1,8 @@
 package com.dashboardjusttalk.service.impl;
 
 import com.dashboardjusttalk.Dto.ResultInsertionDto;
+import com.dashboardjusttalk.Dto.ResultResponseDto;
+import com.dashboardjusttalk.Dto.ResultSearchDto;
 import com.dashboardjusttalk.Dto.converter.ResultInsertionDtoConverter;
 import com.dashboardjusttalk.Exception.ResultInsertionFailedException;
 import com.dashboardjusttalk.model.Result;
@@ -9,6 +11,8 @@ import com.dashboardjusttalk.service.IResultService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ResultService implements IResultService {
@@ -26,4 +30,8 @@ public class ResultService implements IResultService {
             throw new ResultInsertionFailedException();
         }
     }
+//
+//    public List<ResultResponseDto> GetResultsResponse(ResultSearchDto resultSearchDto){
+//
+//    }
 }
