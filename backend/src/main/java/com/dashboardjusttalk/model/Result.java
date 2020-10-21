@@ -65,4 +65,5 @@ public class Result  {
     @Convert(converter = StringSetConverter.class)
     @Column
     private Set<String> badgesAwarded;
+    private long timeDuration;
 }

@@ -12,14 +12,13 @@ import javax.persistence.Column;
 import java.util.Date;
 @Getter
 @Setter
-
 public class ResultSearchDto {
 
     public Date startTime;
     public Date endTime;
     public int startYears;
     public int endYears;
-    public String badges;
+    public String userType;
     public int duration;
 
 }

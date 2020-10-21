@@ -1,12 +1,19 @@
 package com.dashboardjusttalk.Dto;
 
-import java.util.Set;
+import com.dashboardjusttalk.util.StringSetConverter;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import java.util.Set;
+@Getter
+@Setter
 public class ResultResponseDto {
     public String userType;
-    public int years;
-    public Set<String> badgesAwarded;
-    public Set<String> segments;
-    public Set<String> topicsTalkQualifiedUser;
+    public long years;
+    public String badgesAwarded;
+    public String segments;
+    public String topicsTalkQualifiedUser;
 
 }

@@ -28,12 +28,10 @@ public class ResultController {
         }
 
     }
-//    @GetMapping("result")
-//    public ResponseEntity<?> ReadResultsMatched(@RequestBody ResultSearchDto resultSearchDto){
-//        try{
-//            return
-//        }catch (){
-//            return
-//        }
-//    }
+    @PostMapping("result/search")
+    public ResponseEntity<?> ReadResultsMatched(@RequestBody ResultSearchDto resultSearchDto){
+
+        return ResponseEntity.status(200).body(resultService.GetResultsResponse(resultSearchDto));
+
+    }
 }
