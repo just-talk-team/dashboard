@@ -7,11 +7,11 @@
 
       <div class="field">
         <label>Fecha Inicio:</label>
-        <input type="date" name="startDate" v-model="filter_sd" @change="filterByDate()" />
+        <input type="date" name="startDate" v-model="filter_sd" />
       </div>
       <div class="field">
         <label>Fecha Fin:</label>
-        <input type="date" name="endDate" v-model="filter_ed" @change="filterByDate()" />
+        <input type="date" name="endDate" v-model="filter_ed" />
       </div>
 
       <div class="field">
@@ -42,7 +42,7 @@
 
       <div class="field">
         <label>Duración:</label>
-          <input type="time" name="time">
+          <input type="time" name="time" v-model="duration">
       </div>
 
 		<v-card-actions>
@@ -62,7 +62,7 @@
     </v-row>
 
     <v-snackbar v-model="snackbar" :left="$vuetify.breakpoint.lgAndUp">
-      Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis
+      
       <v-btn color="white" text @click="snackbar = false">Cerrar</v-btn>
     </v-snackbar>
     
@@ -71,7 +71,6 @@
 
 <script>
 import StatisticCard from "../components/StatisticCard";
-import axios from "axios";
 import moment from "moment";
 import statisticsData from "../data/statistics.json";
 
@@ -84,20 +83,21 @@ export default {
 
   data() {
     return {
-      loadNewContent: false,
+      loadNewContent: true,
       snackbar: false,
       statistics: statisticsData,
-      userType: "everyone",
       filter_sd: "",
       filter_ed: "",
+      userType: "everyone",
+      duration: "",
       events: []
-
     };
   },
 
   mounted() {
     this.getEventsByUserType(this.userType);
   },
+  
   filters: {
     formatDate: function(date) {
       if (date) {
@@ -113,19 +113,22 @@ export default {
 
     },
 
-    getEventsByUserType(userType) {
-      return axios
-        .get(
-          "http://search-api.nfhsnetwork.com/search/events/upcoming?state_association_key=" +
-            userType +
-            "&size=50"
-        )
-        .then(result => {
-          return (this.events = result.data.items);
-        });
-    },
 
-    filterByDate() {
+    analize(){
+      if (this.filter_ed == "" ||  this.filter_ed == "" ){
+          confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
+      }
+      else if (this.filter_ed < this.filter_sd){
+          confirm("La fecha de inicio debe ser menor a la fecha fin");
+      }
+
+      else if (this.filter_sd != "" && this.filter_ed == "")
+        confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
+      
+      else if (this.filter_sd == "" && this.filter_ed != "")
+        confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
+
+      else {
       this.getEventsByUserType(this.userType).then(events => {
         this.events = events.filter(event => {
           var eventStartDate = new Date(event.start_time.substring(0, 10));
@@ -135,22 +138,18 @@ export default {
           if (this.filter_ed != "") {
             var filterEndDate = new Date(this.filter_ed);
           }
-
-          if (this.filter_sd == "" && this.filter_ed == "") {
-            return events;
-          } else if (this.filter_sd != "" && this.filter_ed == "") {
-            return eventStartDate >= filterStartDate;
-          } else if (this.filter_sd == "" && this.filter_ed != "") {
-            return eventStartDate <= filterEndDate;
-          } else {
+          else {
             return (
               eventStartDate >= filterStartDate &&
               eventStartDate <= filterEndDate
             );
           }
+
         });
       });
+      }
     }
+
 
   }
 };
