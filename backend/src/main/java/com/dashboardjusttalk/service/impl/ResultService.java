@@ -1,22 +1,18 @@
 package com.dashboardjusttalk.service.impl;
 
+import com.dashboardjusttalk.Dto.IResultResponseDto;
 import com.dashboardjusttalk.Dto.ResultInsertionDto;
-import com.dashboardjusttalk.Dto.ResultResponseDto;
 import com.dashboardjusttalk.Dto.ResultSearchDto;
 import com.dashboardjusttalk.Dto.converter.ResultInsertionDtoConverter;
 import com.dashboardjusttalk.Exception.ResultInsertionFailedException;
 import com.dashboardjusttalk.model.Result;
 import com.dashboardjusttalk.repository.ResultRepository;
 import com.dashboardjusttalk.service.IResultService;
-import lombok.val;
-import org.modelmapper.ModelMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
-import java.time.temporal.Temporal;
-import java.util.Date;
-import java.util.List;
+import java.util.Collection;
 
 @Service
 public class ResultService implements IResultService {
@@ -38,7 +34,7 @@ public class ResultService implements IResultService {
         }
     }
     @Override
-    public List<ResultResponseDto> GetResultsResponse(ResultSearchDto resultSearchDto){
+    public Collection<IResultResponseDto> GetResultsResponse(ResultSearchDto resultSearchDto){
         return resultRepository.SelectSearch(resultSearchDto.startTime,resultSearchDto.endTime);
     }
 }

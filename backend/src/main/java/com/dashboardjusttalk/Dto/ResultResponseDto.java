@@ -9,11 +9,10 @@ import javax.persistence.Convert;
 import java.util.Set;
 @Getter
 @Setter
-public class ResultResponseDto {
+public class ResultResponseDto implements IResultResponseDto {
     public String userType;
     public long years;
     public String badgesAwarded;
     public String segments;
     public String topicsTalkQualifiedUser;
-
 }
