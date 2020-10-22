@@ -14,8 +14,9 @@ public class registrationToDashboard  extends SpringIntegrationTest {
     @Autowired
     private UserController userController;
     private ResponseEntity responseEntity;
+
     @When("introduce {string}, {string}, {string}")
-    public void introduce(String user, String name, String password) {
+    public void introduceUserNamePassword(String user, String name, String password) {
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
         userRegistrationDto.setUser(user);
         userRegistrationDto.setName(name);
@@ -26,4 +27,7 @@ public class registrationToDashboard  extends SpringIntegrationTest {
     public void theClientReceivesStatusCodeOf(int arg0) {
         assertEquals(arg0,responseEntity.getStatusCodeValue());
     }
+
+
+
 }

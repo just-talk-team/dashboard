@@ -14,6 +14,7 @@ public class authenticationToDashboard extends SpringIntegrationTest {
     @Autowired
     private UserController userController;
     private ResponseEntity responseEntity;
+
     @When("introduce {string} and {string}")
     public void introduceAnd(String arg0, String arg1) {
         UserLoginDto userLoginDto = new UserLoginDto();
