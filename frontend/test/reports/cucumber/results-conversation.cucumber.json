@@ -1,0 +1,68 @@
+[
+  {
+    "description": "    Como administrador \n    Quiero poder tener un dashboard con información sobre conversaciones finalizadas\n    Para poder analizar los mismos y poder tomar decisiones de cambio.",
+    "keyword": "Feature",
+    "name": "Filtrar resultados de conversaciones",
+    "line": 1,
+    "id": "filtrar-resultados-de-conversaciones",
+    "tags": [],
+    "uri": "results-conversation.feature",
+    "elements": [
+      {
+        "id": "filtrar-resultados-de-conversaciones;tc04---fecha-inicio-y-fecha-fin-digitados-correctamente",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "TC04 - Fecha Inicio y Fecha Fin digitados correctamente",
+        "tags": [
+          {
+            "name": "@TC04",
+            "line": 10
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "el usuario que ha colocado los valores obligatorios de -FechaInicio- y -FechaFin-",
+            "result": {
+              "status": "passed",
+              "duration": 32584000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "selecciona opcionalmente algún filtro adicional",
+            "result": {
+              "status": "passed",
+              "duration": 3302000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "de click sobre el botón -Analizar-",
+            "result": {
+              "status": "passed",
+              "duration": 3699000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "se le mostrará un dashboard con la información solicitada",
+            "result": {
+              "status": "passed",
+              "duration": 3779000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -25,7 +25,7 @@
 		<v-card-actions>
 			<v-btn to="/report" color="success">Contactar Soporte</v-btn>
 			<v-spacer></v-spacer>
-			<v-btn color="info" @click="auth">Iniciar Sesión</v-btn>
+			<v-btn color="info" @click="auth">Ingresar</v-btn>
 		</v-card-actions>
 	</v-card> 
 </template>
@@ -60,12 +60,12 @@ import LoginService from  "../core/services/login.service";
 					this.$router.push("/dashboard");
 				} catch (error){
 					if (this.user.length<1 || this.password.length<1){
-						//confirm("Verificar que el campo usuario y/o contraseña no este vacío.");
-						console.log("campos vacios");
+						confirm("Verificar que el campo usuario y/o contraseña no este vacío.");
+						//console.log("campos vacios");
 					}
 					else
-						//confirm("Usuario o contraseña incorrecto.") 
-						console.log("usuario no válido")
+						confirm("Usuario o contraseña incorrecto.") 
+						//console.log("usuario no válido")
 				}
 			},
 		}

@@ -35,13 +35,19 @@
 				</v-flex>
 			</v-layout>
 		</v-footer>
+	
 	</v-app>
 </template>
 
 <script>
+
+
 export default {
 	name: 'App',
+
+
 	data() {
+		
 		return {
 			links: [
 				{
@@ -49,7 +55,7 @@ export default {
 					url: '/'
 				},
 				{ 
-					label: "Iniciar Sesión",
+					label: "Login",
 					url: '/login'
 				},
 			]
