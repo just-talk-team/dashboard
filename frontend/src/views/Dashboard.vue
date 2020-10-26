@@ -158,15 +158,6 @@ export default {
     GenerateACard() {
     },
 
-
-  renderResult(){
-    if(this.state.tweets){
-      this.state.tweets.map(tweet =>
-        <div key={tweet.id}>{tweet.text}</div>
-      )
-    }
-  }
-
   }
 };
 </script>
