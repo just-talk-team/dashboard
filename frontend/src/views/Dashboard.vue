@@ -18,11 +18,21 @@
         <label>Tipo de Usuario:</label>
         <select
           v-model="userType"
-          name="userType"
-          @change="getEventsByuserType(userType)">
+          name="userType">
           <option name="userType" value="everyone" selected>Todos</option>
           <option name="userType" value="free">Freemium</option>
           <option name="userType" value="premium">Premium</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Género:</label>
+        <select
+          v-model="gender"
+          name="gender">
+          <option name="gender" value="both" selected>Ambos</option>
+          <option name="gender" value="femenine">F</option>
+          <option name="gender" value="">M</option>
         </select>
       </div>
 
@@ -31,12 +41,12 @@
 				<v-text-field 
 					label="Desde" 
 					type= "text"
-          pattern="[0-99]"  maxlength="2"
+          pattern="[0-99]" maxlength="2"
 					v-model="age1"/>
 				<v-text-field
 					label="Hasta"
           type="text" 
-          pattern="[0-99]"  maxlength="2"
+          pattern="[0-99]" maxlength="2"
           v-model="age2"/>
       </div>
 
@@ -50,7 +60,6 @@
 			<v-btn color="success" @click="analize">Analizar</v-btn>
 		</v-card-actions>
     </div>
-
   </div>
 
     <v-row>
@@ -58,11 +67,10 @@
         <StatisticCard :statistic="statistic" />
       </v-col>
     </v-row>
+
     <v-row>
     </v-row>
-
     <v-snackbar v-model="snackbar" :left="$vuetify.breakpoint.lgAndUp">
-      
       <v-btn color="white" text @click="snackbar = false">Cerrar</v-btn>
     </v-snackbar>
     
@@ -72,30 +80,34 @@
 <script>
 import StatisticCard from "../components/StatisticCard";
 import moment from "moment";
-import statisticsData from "../data/statistics.json";
 
 export default {
   name: "DashboardPage",
   components: {
     StatisticCard
-
   },
 
   data() {
     return {
       loadNewContent: true,
       snackbar: false,
-      statistics: statisticsData,
       filter_sd: "",
       filter_ed: "",
-      userType: "everyone",
+      userType: "",
       duration: "",
-      events: []
-    };
-  },
+      gender: "",
+      events: [],
 
-  mounted() {
-    this.getEventsByUserType(this.userType);
+      statistics:[
+      {"title": "Usuarios Free", "value": ""},//userType.free },
+      {"title": "Usuarios Premium", "value": ""},//userType.premium },
+      {"title": "Total Usuarios", "value": ""}, //userType.everyone },
+      {"title": "# en Edad Seleccionada", "value": ""},//userType.age },
+      {"title": "Género Seleccionado", "value": ""}, //userType.gender }
+      {"title": "Intereses en común", "value": ""}, //
+      ],
+      
+    };
   },
   
   filters: {
@@ -107,12 +119,6 @@ export default {
   },
 
   methods: {
-
-    showMoreContent(entries) {
-      this.loadNewContent = (entries[0].isIntersecting)
-
-    },
-
 
     analize(){
       if (this.filter_ed == "" ||  this.filter_ed == "" ){
@@ -144,12 +150,22 @@ export default {
               eventStartDate <= filterEndDate
             );
           }
-
         });
       });
       }
-    }
+    },
 
+    GenerateACard() {
+    },
+
+
+  renderResult(){
+    if(this.state.tweets){
+      this.state.tweets.map(tweet =>
+        <div key={tweet.id}>{tweet.text}</div>
+      )
+    }
+  }
 
   }
 };
@@ -175,7 +191,7 @@ a {
   border-bottom: 2px #000 solid;
 }
 .search-row {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #71bbe4;
@@ -192,7 +208,7 @@ a {
 .search-row select {
   width: 120px;
   height: 30px;
-  padding-left: 15px;
+  padding-left: 3px;
   margin-left: 10px;
   background-color: #9ee2fda8;
 }
@@ -234,7 +250,7 @@ a {
   }
   .search-row input,
 .search-row select {
-  width: 150px;
+  width: 137px;
  }
 }
 </style>
