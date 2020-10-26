@@ -209,38 +209,38 @@ a {
   margin: 0 auto;
   padding: 20px;
 }
-.table-row {
+.table-row{
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: flex-start;
 }
-.table-row .row-col {
+.table-row .row-col{
   padding: 15px 0;
   text-align: left;
   text-transform: capitalize;
   font-size: 14px;
 }
-.table-row .row-col.sm {
+.table-row .row-col.sm{
   flex-basis: 15%;
 }
-.table-row .row-col.md {
+.table-row .row-col.md{
   flex-basis: 20%;
 }
-.table-row .row-col.lg {
+.table-row .row-col.lg{
   flex-basis: 50%;
 }
-@media (min-width: 576px) {
+@media (min-width: 576px){
   .search-row {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
   }
-  .search-row .field {
+  .search-row .field{
     margin-bottom: 0px;
   }
   .search-row input,
-.search-row select {
+.search-row select{
   width: 137px;
  }
 }
