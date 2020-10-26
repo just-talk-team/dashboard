@@ -27,11 +27,6 @@ export default new Router({
 			path: '/report',
 			name: 'report',
 			component: () => import('./views/Report.vue')
-		},
-		{
-			path: '/datatable',
-			name: 'Datatable',
-			component: () => import('./views/Datatable.vue')
 		}
 	]
 })

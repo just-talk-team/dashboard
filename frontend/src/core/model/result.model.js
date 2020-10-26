@@ -1,10 +1,12 @@
+  /*** Modelo para obtener el resultado*/
 export default class Result{ 
-    constructor(userType){
-      this.userType = userType;
-      this.startDate = startDate;
-      this.endDate = endDate;
-      this.duration = duration;
-      this.age = age;
-      this.gender = gender;
-    }
-  }
+    userType;
+    startDate;
+    endDate;
+    duration;
+    age1;
+    age2;
+    gender;
+}
+
+

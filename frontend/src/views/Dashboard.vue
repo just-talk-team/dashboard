@@ -7,17 +7,17 @@
 
       <div class="field">
         <label>Fecha Inicio:</label>
-        <input type="date" name="startDate" v-model="filter_sd" />
+        <input type="date" name="startDate" :v-model="startDate" />
       </div>
       <div class="field">
         <label>Fecha Fin:</label>
-        <input type="date" name="endDate" v-model="filter_ed" />
+        <input type="date" name="endDate" :v-model="endDate" />
       </div>
 
       <div class="field">
         <label>Tipo de Usuario:</label>
         <select
-          v-model="userType"
+          :v-model="userType"
           name="userType">
           <option name="userType" value="everyone" selected>Todos</option>
           <option name="userType" value="free">Freemium</option>
@@ -28,7 +28,7 @@
       <div class="field">
         <label>Género:</label>
         <select
-          v-model="gender"
+          :v-model="gender"
           name="gender">
           <option name="gender" value="both" selected>Ambos</option>
           <option name="gender" value="femenine">F</option>
@@ -42,17 +42,17 @@
 					label="Desde" 
 					type= "text"
           pattern="[0-99]" maxlength="2"
-					v-model="age1"/>
+					:v-model="age1"/>
 				<v-text-field
 					label="Hasta"
           type="text" 
           pattern="[0-99]" maxlength="2"
-          v-model="age2"/>
+          :v-model="age2"/>
       </div>
 
       <div class="field">
         <label>Duración:</label>
-          <input type="time" name="time" v-model="duration">
+          <input type="time" name="time" :v-model="duration">
       </div>
 
 		<v-card-actions>
@@ -67,12 +67,6 @@
         <StatisticCard :statistic="statistic" />
       </v-col>
     </v-row>
-
-    <v-row>
-    </v-row>
-    <v-snackbar v-model="snackbar" :left="$vuetify.breakpoint.lgAndUp">
-      <v-btn color="white" text @click="snackbar = false">Cerrar</v-btn>
-    </v-snackbar>
     
   </v-container>
 </template>
@@ -80,6 +74,8 @@
 <script>
 import StatisticCard from "../components/StatisticCard";
 import moment from "moment";
+import Result from "../core/model/result.model";
+import ResultService from "../core/services/result.service";
 
 export default {
   name: "DashboardPage",
@@ -87,79 +83,81 @@ export default {
     StatisticCard
   },
 
-  data() {
+  data: () => {
     return {
-      loadNewContent: true,
-      snackbar: false,
-      filter_sd: "",
-      filter_ed: "",
-      userType: "",
-      duration: "",
-      gender: "",
-      events: [],
-
-      statistics:[
-      {"title": "Usuarios Free", "value": ""},//userType.free },
-      {"title": "Usuarios Premium", "value": ""},//userType.premium },
-      {"title": "Total Usuarios", "value": ""}, //userType.everyone },
-      {"title": "# en Edad Seleccionada", "value": ""},//userType.age },
-      {"title": "Género Seleccionado", "value": ""}, //userType.gender }
-      {"title": "Intereses en común", "value": ""}, //
-      ],
+      startDate: '',
+      endDate: '',
+      userType: '',
+      age1: '',
+      age2: '',
+      duration: '',
+      gender: '',
+      counterUserTypePremium: 0,
+      counterUserTypeFreemium: 0,
+      badgesAwarded: [],
+      topicsTalked: [],
+      segments: [],
       
-    };
+      statistics:[
+      {"title": "Usuarios Free", "value": this.counterUserTypeFreemium },
+      {"title": "Usuarios Premium", "value": this.counterUserTypePremium},
+      {"title": "Total Usuarios", "value": this.response.data.count}, 
+      {"title": "Intereses en común", "value": this.topicsTalked}, 
+      {"title": "Segmentos", "value": this.segments}, 
+      {"title": "Insignias", "value": this.badgesAwarded},
+      ],
+    }
   },
-  
+
   filters: {
     formatDate: function(date) {
       if (date) {
-        return moment(String(date)).format("MMMM Do YYYY, h:mm:ss a");
+        moment(new Date(date)).format('DD/MM/YYYY')
       }
     }
   },
 
   methods: {
 
-    analize(){
-      if (this.filter_ed == "" ||  this.filter_ed == "" ){
-          confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
-      }
-      else if (this.filter_ed < this.filter_sd){
-          confirm("La fecha de inicio debe ser menor a la fecha fin");
-      }
-
-      else if (this.filter_sd != "" && this.filter_ed == "")
-        confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
-      
-      else if (this.filter_sd == "" && this.filter_ed != "")
-        confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
-
-      else {
-      this.getEventsByUserType(this.userType).then(events => {
-        this.events = events.filter(event => {
-          var eventStartDate = new Date(event.start_time.substring(0, 10));
-          if (this.filter_sd != "") {
-            var filterStartDate = new Date(this.filter_sd);
-          }
-          if (this.filter_ed != "") {
-            var filterEndDate = new Date(this.filter_ed);
-          }
-          else {
-            return (
-              eventStartDate >= filterStartDate &&
-              eventStartDate <= filterEndDate
-            );
-          }
+    async analize(){
+      try{
+        var filterResult = new Result({
+          userType: this.$data.userType,
+          startDate: this.$data.startDate,
+          endDate: this.$data.endDate,
+          duration: this.$data.duration,
+          age1: this.$data.age1,
+          age2: this.$data.age2,
+          gender: this.$data.gender,
         });
-      });
-      }
-    },
 
-    GenerateACard() {
-    },
+        const response = await ResultService.analize(filterResult);
 
-  }
-};
+        for (let i = 0; i< Response.data.count; i++ ){
+          if (response.data[i].userType === "premium" ){
+            this.counterUserTypePremium = this.counterUserTypePremium+1;
+            }
+            if (response.data[i].userType === "freemium" ){
+              this.counterUserTypeFreemium = this.counterUserTypeFreemium+1;
+            }
+            this.badgesAwarded.push(response.data[i].badgesAwarded);
+            this.topicsTalked.push(response.data[i].topicsTalked);
+            this.segments.push(response.data[i].segments);
+        }
+      } catch (error){
+        if (this.endDate == "" ||  this.endDate == "" ){
+          confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
+        } else if (this.endDate < this.startDate){
+          confirm("La fecha de inicio debe ser menor a la fecha fin");
+        } else if (this.startDate != "" && this.endDate == ""){
+          confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
+        } else if (this.startDate == "" && this.endDate != ""){
+          confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
+      } }
+    }
+  },
+}
+
 </script>
 
 <style scoped>
