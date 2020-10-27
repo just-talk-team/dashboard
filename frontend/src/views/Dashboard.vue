@@ -67,6 +67,12 @@
         <StatisticCard :statistic="statistic" />
       </v-col>
     </v-row>
+
+    <v-row>
+    </v-row>
+    <v-snackbar v-model="snackbar" :left="$vuetify.breakpoint.lgAndUp">
+      <v-btn color="white" text @click="snackbar = false">x</v-btn>
+    </v-snackbar>
     
   </v-container>
 </template>
@@ -99,14 +105,15 @@ export default {
       segments: [],
       
       statistics:[
-      {"title": "Usuarios Free", "value": this.counterUserTypeFreemium },
+      // Mockeado: {"title": "Usuarios Free", value: "10"},
+      {"title": "Usuarios Free", value: this.counterUserTypeFreemium},
       {"title": "Usuarios Premium", "value": this.counterUserTypePremium},
       {"title": "Total Usuarios", "value": this.response.data.count}, 
       {"title": "Intereses en común", "value": this.topicsTalked}, 
       {"title": "Segmentos", "value": this.segments}, 
       {"title": "Insignias", "value": this.badgesAwarded},
-      ],
-    }
+      ]
+    };
   },
 
   filters: {
@@ -132,8 +139,9 @@ export default {
         });
 
         const response = await ResultService.analize(filterResult);
+        
 
-        for (let i = 0; i< Response.data.count; i++ ){
+        for (let i = 0; i < response.data.count; i++ ){
           if (response.data[i].userType === "premium" ){
             this.counterUserTypePremium = this.counterUserTypePremium+1;
             }
