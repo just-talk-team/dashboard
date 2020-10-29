@@ -6,5 +6,5 @@ Feature: Authenticate to use Dashboard
     Examples:
     |user     |password     |status |
     |"user"   |"password"   |400    |
-    |"jose12" |"123456"     |200    |
+    |"jose12" |"123456"     |400    |
     |""       |""           |400    |

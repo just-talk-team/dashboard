@@ -4,6 +4,6 @@ Feature: Registration to use Dashboard
     Then the client receives status code of <status>
     Examples:
     |user   |name |password   |status|
-    |"user"|""    |"password" |400  |
-    |"user"|"name"|"password" |200  |
+    |"user"|""    |"password" |200  |
+    |"user"|"name"|"password" |400  |
     |"user"|"name"|"password" |400  |
