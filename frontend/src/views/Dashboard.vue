@@ -7,11 +7,11 @@
 
       <div class="field">
         <label>Fecha Inicio:</label>
-        <input type="date" name="startDate" :v-model="startDate" />
+        <input type="date" name="startDate" v-model="startDate" />
       </div>
       <div class="field">
         <label>Fecha Fin:</label>
-        <input type="date" name="endDate" :v-model="endDate" />
+        <input type="date" name="endDate" v-model="endDate" />
       </div>
 
       <div class="field">
@@ -64,7 +64,7 @@
 
     <v-row>
       <v-col v-for="statistic in statistics" :key="`${statistic.title}`" cols="6" md="3">
-        <StatisticCard :statistic="statistic" />
+      <StatisticCard :statistic="statistic" v-if="showCards" :value="false" />
       </v-col>
     </v-row>
 
@@ -74,11 +74,18 @@
       <v-btn color="white" text @click="snackbar = false">x</v-btn>
     </v-snackbar>
     
+    <v-row>
+      <v-col v-for="sale in sales" :key="`${sale.title}`" cols="12" md="4">
+        <SalesGraph :sale="sale" />
+      </v-col>
+    </v-row>
+
   </v-container>
 </template>
 
 <script>
 import StatisticCard from "../components/StatisticCard";
+import SalesGraph from "../components/SalesGraph";
 import moment from "moment";
 import Result from "../core/model/result.model";
 import ResultService from "../core/services/result.service";
@@ -86,11 +93,13 @@ import ResultService from "../core/services/result.service";
 export default {
   name: "DashboardPage",
   components: {
-    StatisticCard
+    StatisticCard,
+    SalesGraph
   },
 
   data: () => {
     return {
+      showCards: false,
       startDate: '',
       endDate: '',
       userType: '',
@@ -105,13 +114,23 @@ export default {
       segments: [],
       
       statistics:[
-      // Mockeado: {"title": "Usuarios Free", value: "10"},
-      {"title": "Usuarios Free", value: this.counterUserTypeFreemium},
-      {"title": "Usuarios Premium", "value": this.counterUserTypePremium},
-      {"title": "Total Usuarios", "value": this.response.data.count}, 
-      {"title": "Intereses en común", "value": this.topicsTalked}, 
-      {"title": "Segmentos", "value": this.segments}, 
-      {"title": "Insignias", "value": this.badgesAwarded},
+      {"title": "Todos los Usuarios", value: "16"},
+      {"title": "Usuarios Premium", value: "3"},
+      {"title": "Usuarios Free", value: "19"},
+      {"title": "Segmentos", value: "UPC"},
+
+      //{"title": "Usuarios Free", value: this.counterUserTypeFreemium},
+      //{"title": "Usuarios Premium", "value": this.counterUserTypePremium},
+      //{"title": "Total Usuarios", "value": this.response.data.count}, 
+      //{"title": "Intereses en común", "value": this.topicsTalked}, 
+      //{"title": "Segmentos", "value": this.segments}, 
+      //{"title": "Insignias", "value": this.badgesAwarded},
+      ],
+
+      sales: [
+      { "title": "Edad de Usuarios", "sales": [42, 46, 75, 51, 59, 61, 50, 39], "color": "cyan", "labels": [18, 19, 20, 21, 22, 23, 24, 25] },
+      {"title": "Duración de Chats", "sales": [25, 23, 33, 28, 43], "color": "teal", "labels": ["1min", "2min", "3min", "4min", "5min"]}, 
+      {"title": "Usuarios Registrados", "sales": [21, 24, 27, 31, 44, 20, 34, 34, 22, 29, 33, 30], "color": "blue", "labels": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]}
       ]
     };
   },
@@ -119,7 +138,7 @@ export default {
   filters: {
     formatDate: function(date) {
       if (date) {
-        moment(new Date(date)).format('DD/MM/YYYY')
+        return moment(new Date(date)).format('DD/MM/YYYY')
       }
     }
   },
@@ -127,6 +146,7 @@ export default {
   methods: {
 
     async analize(){
+      
       try{
         var filterResult = new Result({
           userType: this.$data.userType,
@@ -139,29 +159,29 @@ export default {
         });
 
         const response = await ResultService.analize(filterResult);
-        
+        StatisticCard = true;
 
         for (let i = 0; i < response.data.count; i++ ){
           if (response.data[i].userType === "premium" ){
             this.counterUserTypePremium = this.counterUserTypePremium+1;
-            }
-            if (response.data[i].userType === "freemium" ){
-              this.counterUserTypeFreemium = this.counterUserTypeFreemium+1;
-            }
-            this.badgesAwarded.push(response.data[i].badgesAwarded);
-            this.topicsTalked.push(response.data[i].topicsTalked);
-            this.segments.push(response.data[i].segments);
+          }
+          if (response.data[i].userType === "freemium" ){
+            this.counterUserTypeFreemium = this.counterUserTypeFreemium+1;
+          }
+          this.badgesAwarded.push(response.data[i].badgesAwarded);
+          this.topicsTalked.push(response.data[i].topicsTalked);
+          this.segments.push(response.data[i].segments);
         }
       } catch (error){
-        if (this.endDate == "" ||  this.endDate == "" ){
-          confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
-        } else if (this.endDate < this.startDate){
-          confirm("La fecha de inicio debe ser menor a la fecha fin");
+        if (this.startDate == "" ||  this.endDate == "" ){
+          return confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
+        } if (this.endDate < this.startDate){
+          return confirm("La fecha de inicio debe ser menor a la fecha fin");
         } else if (this.startDate != "" && this.endDate == ""){
-          confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
+          return confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
         } else if (this.startDate == "" && this.endDate != ""){
-          confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
-      } }
+          return confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
+        } else this.showCards = true; }
     }
   },
 }
