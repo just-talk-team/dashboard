@@ -138,7 +138,7 @@ export default {
   filters: {
     formatDate: function(date) {
       if (date) {
-        return moment(String(date)).format("MMMM Do YYYY, h:mm:ss a");
+        return moment(new Date(date)).format('DD/MM/YYYY')
       }
     }
   },
