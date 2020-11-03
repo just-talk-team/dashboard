@@ -1,0 +1,168 @@
+[
+  {
+    "description": "    Como administrador \n    Quiero poder autenticarme con mi usuario y contraseña  \n    Para hacer uso del dashboard",
+    "keyword": "Feature",
+    "name": "Autenticarse para usar Dashboard",
+    "line": 1,
+    "id": "autenticarse-para-usar-dashboard",
+    "tags": [],
+    "uri": "login-dashboard.feature",
+    "elements": [
+      {
+        "id": "autenticarse-para-usar-dashboard;tc01---datos-de-usuario-y-password-correctos",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "TC01 - Datos de usuario y password correctos",
+        "tags": [
+          {
+            "name": "@TC01",
+            "line": 10
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "el usuario que digito su usuario y contraseña correctamente",
+            "result": {
+              "status": "passed",
+              "duration": 1823000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "de click en el botón -Ingresar-",
+            "result": {
+              "status": "passed",
+              "duration": 8068000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "se le mostrará la pantalla de inicio del dashboard",
+            "result": {
+              "status": "passed",
+              "duration": 3826000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "autenticarse-para-usar-dashboard;tc02---datos-de-usuario-y-password-incorrectos",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "TC02 - Datos de usuario y password incorrectos",
+        "tags": [
+          {
+            "name": "@TC02",
+            "line": 16
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 18,
+            "name": "el usuario ingresa el valor de usuario",
+            "result": {
+              "status": "passed",
+              "duration": 4313000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "el usuario ingresa valor de contraseña",
+            "result": {
+              "status": "passed",
+              "duration": 3395000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "el usuario da click en el botón -Ingresar-",
+            "result": {
+              "status": "passed",
+              "duration": 1067000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "se muestra una ventana emergente con un mensaje de error",
+            "result": {
+              "status": "passed",
+              "duration": 63000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "autenticarse-para-usar-dashboard;tc03---datos-de-usuario-y/o-password-incorrectos",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "TC03 - Datos de usuario y/o password incorrectos",
+        "tags": [
+          {
+            "name": "@TC03",
+            "line": 28
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 30,
+            "name": "el usuario ingresa el valor de usuario",
+            "result": {
+              "status": "passed",
+              "duration": 4418000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 31,
+            "name": "el usuario ingresa valor de contraseña",
+            "result": {
+              "status": "passed",
+              "duration": 3336000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 32,
+            "name": "el usuario da click en el botón -Ingresar-",
+            "result": {
+              "status": "passed",
+              "duration": 1052000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "se muestra una ventana emergente con un mensaje de error",
+            "result": {
+              "status": "passed",
+              "duration": 48000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

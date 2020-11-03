@@ -2,6 +2,7 @@
   <v-card>
     <v-card-title>{{ statistic.title }}</v-card-title>
     <v-card-text class="display-2">{{ statistic.value }}</v-card-text>
+    <v-card-color>  </v-card-color>
   </v-card>
 </template>
 
