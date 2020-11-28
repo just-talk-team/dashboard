@@ -3,19 +3,20 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 //TC01
 Given('the user that entered your username and password correctly', () => {
   cy.visit('https://jt-dashboard-development.herokuapp.com');
-  cy.url().should('contains', 'https://jt-dashboard-development.herokuapp.com');
+  //cy.url().should('contains', '/login');
+  cy.wait(2000);
 });
 
 When('he clicks the button -Loggin-', () => {
-    cy.visit('/login')
+    cy.get('.v-toolbar__content > [href="/login"] > .v-btn__content').click();
     cy.wait(2000)        
-    cy.get('#input-18').type('vivieall')
-    cy.get('#input-22').type('1234567')
+    cy.get('#input-22').type('jalfonso')
+    cy.get('#input-26').type('blancoazul')
     cy.get('.info > .v-btn__content').click()
 });
 
 Then('he will be shown the dashboard home screen', () => {
-    cy.visit('/dashboard')
+    //cy.visit('https://jt-dashboard-development.herokuapp.com/dashboard')
     cy.wait(2000)
     cy.contains('h1', 'Just Talk Dashboard')
 });
@@ -23,14 +24,15 @@ Then('he will be shown the dashboard home screen', () => {
 
 //TC02
 Given('the user enter the user value', () => {
-    cy.visit('/login')
+    cy.visit('https://jt-dashboard-development.herokuapp.com')
+    cy.get('.v-toolbar__content > [href="/login"] > .v-btn__content').click();
     cy.wait(2000)    
-    cy.get('#input-18').type('vivieal')
+    cy.get('#input-22').type('vivieal')
   });
 
 And('the user enters password value', () => {
     cy.wait(2000)    
-    cy.get('#input-22').type('Test123')    
+    cy.get('#input-26').type('Test123')    
 });
   
 When('the user clicks the button -Loggin-', () => {
@@ -44,14 +46,15 @@ cy.log('Usuario o contraseña incorrecto')
 
 //TC03
 Given('the user enter the user value', () => {
-    cy.visit('/login')
+    cy.visit('https://jt-dashboard-development.herokuapp.com')
+    cy.get('.v-toolbar__content > [href="/login"] > .v-btn__content').click();
     cy.wait(2000)    
-    cy.get('#input-18').type('vivieal')
+    cy.get('#input-22').type('vivieal')
   });
 
 And('the user enters password value', () => {
     cy.wait(2000)    
-    cy.get('#input-22').should('have.value', '');
+    cy.get('#input-26').should('have.value', '');
 });
   
 When('the user clicks the button -Loggin-', () => {

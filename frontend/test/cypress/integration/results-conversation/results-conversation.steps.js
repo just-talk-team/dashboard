@@ -2,8 +2,13 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
 //TC04
 Given('the user who has placed the mandatory values of -StartDate- and -EndDate-', () => {
-  cy.visit('/dashboard');
-  cy.url().should('contains', '/dashboard');
+    cy.visit('https://jt-dashboard-development.herokuapp.com');
+    cy.get('.v-toolbar__content > [href="/login"] > .v-btn__content').click();
+    cy.wait(2000)        
+    cy.get('#input-22').type('jalfonso')
+    cy.get('#input-26').type('blancoazul')
+    cy.get('.info > .v-btn__content').click()
+    cy.url().should('contains', '/dashboard');
 });
 
 And('optionally select some additional filter', () => {
@@ -47,7 +52,13 @@ Then('a pop-up window is shown with an error message', () => {
 
 //TC06
 Given('the user who has not yet set the mandatory values of -StartDate- and -EndDate-', () => {
-    cy.visit('/dashboard')
+    cy.visit('https://jt-dashboard-development.herokuapp.com');
+    cy.get('.v-toolbar__content > [href="/login"] > .v-btn__content').click();
+    cy.wait(2000)        
+    cy.get('#input-22').type('jalfonso')
+    cy.get('#input-26').type('blancoazul')
+    cy.get('.info > .v-btn__content').click()
+    cy.url().should('contains', '/dashboard');
     cy.wait(2000)    
   });
 
