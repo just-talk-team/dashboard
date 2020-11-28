@@ -3,7 +3,6 @@ package com.dashboardjusttalk.CucumberIntegration.Steps;
 import com.dashboardjusttalk.CucumberIntegration.SpringIntegrationTest;
 import com.dashboardjusttalk.Dto.ResultInsertionDto;
 import com.dashboardjusttalk.controller.ResultController;
-import com.dashboardjusttalk.controller.UserController;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
 import java.util.Date;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -51,7 +49,7 @@ public class RegistrationOfResults extends SpringIntegrationTest {
         resultInsertionDto.setTopics_hear(Collections.singleton("viajes a cuzco"));
         resultInsertionDto.setTopics_hear_qualified_user(Collections.singleton("viajes a cuzco"));
         resultInsertionDto.setTopics_talk(Collections.singleton("COVID,Clasicas de cachimbos"));
-        resultInsertionDto.setTopics__talk_qualified_user(Collections.singleton("COVID,Clasicas de cachimbos"));
+        resultInsertionDto.setTopics_talk_qualified_user(Collections.singleton("COVID,Clasicas de cachimbos"));
         resultInsertionDto.setUser_type("premium");
         resultInsertionDto.setUser_type_qualified_user("premium");
         responseEntity= resultController.CreateEntryResult(resultInsertionDto);

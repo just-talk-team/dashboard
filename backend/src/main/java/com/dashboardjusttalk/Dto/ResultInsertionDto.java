@@ -35,7 +35,7 @@ public class ResultInsertionDto {
     public Date birthdate_qualified_user;
 
 
-    public Set<String> topics__talk_qualified_user;
+    public Set<String> topics_talk_qualified_user;
 
     public Set<String> topics_hear_qualified_user;
 

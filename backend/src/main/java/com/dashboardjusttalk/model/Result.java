@@ -32,7 +32,7 @@ public class Result  {
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+//commit de prueba
     private String userType;
     private String gender;
     private Date birthdate;
