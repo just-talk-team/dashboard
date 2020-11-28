@@ -12,6 +12,8 @@ public class ResultInsertionDtoConverter {
     public ResultInsertionDto convertToDto(Result result){
         ResultInsertionDto resultInsertionDto = new ResultInsertionDto();
         resultInsertionDto.setGender(result.getGender());
+        resultInsertionDto.setSegments_qualified_user(result.getSegmentsQualifiedUser());
+        resultInsertionDto.setGender_qualified_user(result.getGenderQualifiedUser());
         resultInsertionDto.setBirthdate(result.getBirthdate());
         resultInsertionDto.setUser_type(result.getUserType());
         resultInsertionDto.setTopics_talk(result.getTopicsTalk());
@@ -29,6 +31,8 @@ public class ResultInsertionDtoConverter {
     public Result convertToEntity(ResultInsertionDto resultInsertionDto){
         Result result = new Result();
         result.setGender(resultInsertionDto.getGender());
+        result.setGenderQualifiedUser(resultInsertionDto.getGender_qualified_user());
+        result.setSegmentsQualifiedUser(resultInsertionDto.getSegments_qualified_user());
         result.setBirthdate(resultInsertionDto.getBirthdate());
         result.setUserType(resultInsertionDto.getUser_type());
         result.setTopicsHear(resultInsertionDto.getTopics_hear());
