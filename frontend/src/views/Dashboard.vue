@@ -11,7 +11,7 @@
       </div>
       <div class="field">
         <label>Fecha Fin:</label>
-        <input type="date" name="endDate" v-model="endDate" />
+        <input type="date" name="endDate" v-model="endDate"  />
       </div>
 
       <div class="field">
@@ -70,9 +70,6 @@
 
     <v-row>
     </v-row>
-    <v-snackbar v-model="snackbar" :left="$vuetify.breakpoint.lgAndUp">
-      <v-btn color="white" text @click="snackbar = false">x</v-btn>
-    </v-snackbar>
     
     <v-row>
       <v-col v-for="sale in sales" :key="`${sale.title}`" cols="12" md="4">
@@ -114,17 +111,17 @@ export default {
       segments: [],
       
       statistics:[
-      {"title": "Todos los Usuarios", value: "16"},
-      {"title": "Usuarios Premium", value: "3"},
-      {"title": "Usuarios Free", value: "19"},
-      {"title": "Segmentos", value: "UPC"},
+      {"title": "Todos los Usuarios", value: "6"},
+      {"title": "Usuarios Premium", value: "0"},
+      {"title": "Usuarios Free", value: "6"},
+      {"title": "Segmentos", value: "upc.edu.pe"},
 
-      //{"title": "Usuarios Free", value: this.counterUserTypeFreemium},
-      //{"title": "Usuarios Premium", "value": this.counterUserTypePremium},
-      //{"title": "Total Usuarios", "value": this.response.data.count}, 
-      //{"title": "Intereses en común", "value": this.topicsTalked}, 
-      //{"title": "Segmentos", "value": this.segments}, 
-      //{"title": "Insignias", "value": this.badgesAwarded},
+      //{"title": "Usuarios Free", "value": this.counterUserTypeFreemium},
+      //{"title": "Usuarios Premium", value: this.counterUserTypePremium},
+      //{"title": "Total Usuarios", value: this.response.data.count}, 
+      //{"title": "Intereses en común", value: this.topicsTalked}, 
+      //{"title": "Segmentos", value: this.segments}, 
+      //{"title": "Insignias", value: this.badgesAwarded},
       ],
 
       sales: [
@@ -138,7 +135,8 @@ export default {
   filters: {
     formatDate: function(date) {
       if (date) {
-        return moment(new Date(date)).format('DD/MM/YYYY')
+        return moment(new Date(date)).format("MMMM Do YYYY, h:mm:ss a")
+        // var date = new Date("2013-03-10T02:00:00Z"); date.toISOString().substring(0, 10);
       }
     }
   },
@@ -148,17 +146,21 @@ export default {
     async analize(){
       
       try{
-        var filterResult = new Result({
-          userType: this.$data.userType,
-          startDate: this.$data.startDate,
-          endDate: this.$data.endDate,
-          duration: this.$data.duration,
-          age1: this.$data.age1,
-          age2: this.$data.age2,
-          gender: this.$data.gender,
-        });
 
-        const response = await ResultService.analize(filterResult);
+        var mydate = new Date(this.startDate);
+        var mydate2 = new Date(this.endDate);
+
+        var filterResult = new Result();
+        
+          filterResult.userType = this.userType;
+          filterResult.startTime = mydate.toISOString();
+          filterResult.endTime = mydate2.toISOString();
+          filterResult.duration = this.duration;
+          filterResult.startYears = this.age1;
+          filterResult.endYears = this.age2;
+          //gender: this.$data.gender,
+        
+        const response = await ResultService.sendResult(filterResult);
         StatisticCard = true;
 
         for (let i = 0; i < response.data.count; i++ ){

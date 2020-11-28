@@ -1,63 +1,66 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
 //TC01
-Given('el usuario que digito su usuario y contraseña correctamente', () => {
-  cy.visit('http://localhost:8086');
-  cy.url().should('contains', 'http://localhost:8086');
+Given('the user that entered your username and password correctly', () => {
+  cy.visit('https://jt-dashboard-development.herokuapp.com');
+  //cy.url().should('contains', '/login');
+  cy.wait(2000);
 });
 
-When('de click en el botón -Ingresar-', () => {
-    cy.visit('/login')
+When('he clicks the button -Loggin-', () => {
+    cy.get('.v-toolbar__content > [href="/login"] > .v-btn__content').click();
     cy.wait(2000)        
-    cy.get('#input-18').type('vivieall')
-    cy.get('#input-22').type('1234567')
+    cy.get('#input-22').type('jalfonso')
+    cy.get('#input-26').type('blancoazul')
     cy.get('.info > .v-btn__content').click()
 });
 
-Then('se le mostrará la pantalla de inicio del dashboard', () => {
-    cy.visit('/dashboard')
+Then('he will be shown the dashboard home screen', () => {
+    //cy.visit('https://jt-dashboard-development.herokuapp.com/dashboard')
     cy.wait(2000)
     cy.contains('h1', 'Just Talk Dashboard')
 });
 
 
 //TC02
-Given('el usuario ingresa el valor de usuario', () => {
-    cy.visit('/login')
+Given('the user enter the user value', () => {
+    cy.visit('https://jt-dashboard-development.herokuapp.com')
+    cy.get('.v-toolbar__content > [href="/login"] > .v-btn__content').click();
     cy.wait(2000)    
-    cy.get('#input-18').type('vivieal')
+    cy.get('#input-22').type('vivieal')
   });
 
-And('el usuario ingresa valor de contraseña', () => {
+And('the user enters password value', () => {
     cy.wait(2000)    
-    cy.get('#input-22').type('Test123')    
+    cy.get('#input-26').type('Test123')    
 });
   
-When('el usuario da click en el botón -Ingresar-', () => {
+When('the user clicks the button -Loggin-', () => {
     cy.get('.info > .v-btn__content').click()
 });
   
-Then('se muestra una ventana emergente con un mensaje de error', () => {
+Then('a pop-up window is shown with an error message', () => {
 cy.log('Usuario o contraseña incorrecto')
 });
 
 
 //TC03
-Given('el usuario ingresa el valor de usuario', () => {
-    cy.visit('/login')
+Given('the user enter the user value', () => {
+    cy.visit('https://jt-dashboard-development.herokuapp.com')
+    cy.get('.v-toolbar__content > [href="/login"] > .v-btn__content').click();
     cy.wait(2000)    
-    cy.get('#input-18').type('vivieal')
+    cy.get('#input-22').type('vivieal')
   });
 
-And('el usuario ingresa valor de contraseña', () => {
+And('the user enters password value', () => {
     cy.wait(2000)    
-    cy.get('#input-22').should('have.value', '');
+    cy.get('#input-26').should('have.value', '');
 });
   
-When('el usuario da click en el botón -Ingresar-', () => {
+When('the user clicks the button -Loggin-', () => {
     cy.get('.info > .v-btn__content').click()
 });
   
-Then('se muestra una ventana emergente con un mensaje de error', () => {
+Then('a pop-up window is shown with an error message', () => {
     cy.log('Verificar que el campo usuario y/o contraseña no estén vacíos')
 });

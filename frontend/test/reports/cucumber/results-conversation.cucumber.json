@@ -1,22 +1,22 @@
 [
   {
-    "description": "    Como administrador \n    Quiero poder tener un dashboard con información sobre conversaciones finalizadas\n    Para poder analizar los mismos y poder tomar decisiones de cambio.",
+    "description": "     As administrator\n     I want to be able to have a dashboard with information about finished conversations\n     To be able to analyze them and be able to make change decisions.",
     "keyword": "Feature",
-    "name": "Filtrar resultados de conversaciones",
+    "name": "Filter Conversation Results",
     "line": 1,
-    "id": "filtrar-resultados-de-conversaciones",
+    "id": "filter-conversation-results",
     "tags": [],
     "uri": "results-conversation.feature",
     "elements": [
       {
-        "id": "filtrar-resultados-de-conversaciones;tc04---fecha-inicio-y-fecha-fin-digitados-correctamente",
+        "id": "filter-conversation-results;tc06---start-date-and-/-or-end-date-entered-incorrectly",
         "keyword": "Scenario",
-        "line": 11,
-        "name": "TC04 - Fecha Inicio y Fecha Fin digitados correctamente",
+        "line": 30,
+        "name": "TC06 - Start Date and / or End Date entered incorrectly",
         "tags": [
           {
-            "name": "@TC04",
-            "line": 10
+            "name": "@TC06",
+            "line": 29
           }
         ],
         "type": "scenario",
@@ -24,41 +24,39 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
-            "name": "el usuario que ha colocado los valores obligatorios de -FechaInicio- y -FechaFin-",
+            "line": 31,
+            "name": "the user who has not yet set the mandatory values of -StartDate- and -EndDate-",
             "result": {
-              "status": "passed",
-              "duration": 32584000000
+              "status": "failed",
+              "duration": 44831000000,
+              "error_message": "CypressError: cy.visit() failed trying to load:\n\nhttps://jt-dashboard-development.herokuapp.com/dashboard\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not '2xx'.\n\nIf you do not want status codes to cause failures pass the option: 'failOnStatusCode: false'\n    at Object.cypressErr (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:86207:11)\n    at Object.throwErr (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:86162:18)\n    at Object.throwErrByPath (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:86194:17)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:71493:31\n    at visitFailedByErr (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:71006:12)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:71474:22\nFrom previous event:\n    at go (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:71470:17)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:71523:20\nFrom previous event:\n    at visit (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:71521:34)\n    at Object.visit [as fn] (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:71529:14)\n    at originalFn (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:80288:23)\n    at Context.overridden.fn (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:80293:17)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:80892:33\nFrom previous event:\n    at runCommand (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:80871:14)\n    at next (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:81014:14)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:81042:16\nFrom previous event:\n    at next (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:81014:34)\nFrom previous event:\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:81055:37\nFrom previous event:\n    at run (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:81048:19)\n    at Object.cy.<computed> [as then] (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:81457:11)\n    at Context.runnable.fn (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:81699:24)\n    at callFn (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:30929:21)\n    at Test.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:30922:7)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:84877:28\nFrom previous event:\n    at Object.onRunnableRun (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:84865:20)\n    at $Cypress.action (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:78026:61)\n    at Test.Runnable.run (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:83558:13)\n    at Runner.../driver/node_modules/mocha/lib/runner.js.Runner.runTest (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:31396:10)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:31502:12\n    at next (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:31316:14)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:31326:7\n    at next (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:31258:14)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:31289:7\n    at next (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:84801:16)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:84822:11\nFrom previous event:\n    at onNext (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:84819:57)\n    at done (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:30890:5)\n    at callFn (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:30947:7)\n    at Hook.../driver/node_modules/mocha/lib/runnable.js.Runnable.run (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:30922:7)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:84877:28\nFrom previous event:\n    at Object.onRunnableRun (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:84865:20)\n    at $Cypress.action (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:78026:61)\n    at Hook.Runnable.run (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:83558:13)\n    at next (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:31272:10)\n    at https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:31294:5\n    at timeslice (https://jt-dashboard-development.herokuapp.com/__cypress/runner/cypress_runner.js:26362:27)"
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 13,
-            "name": "selecciona opcionalmente algún filtro adicional",
+            "line": 32,
+            "name": "select an -EndDate- less than -StartDate-",
             "result": {
-              "status": "passed",
-              "duration": 3302000000
+              "status": "skipped"
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 14,
-            "name": "de click sobre el botón -Analizar-",
+            "line": 33,
+            "name": "he clicks on the button -Analyze-",
             "result": {
-              "status": "passed",
-              "duration": 3699000000
+              "status": "skipped"
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 15,
-            "name": "se le mostrará un dashboard con la información solicitada",
+            "line": 34,
+            "name": "a pop-up window is shown with an error message",
             "result": {
-              "status": "passed",
-              "duration": 3779000000
+              "status": "skipped"
             }
           }
         ]

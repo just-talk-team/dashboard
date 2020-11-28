@@ -76,7 +76,7 @@ export default {
 		importantLinks: [
 			{
 				text: 'Iniciar Solicitud',
-				href: 'https://jt-dashboard-production.herokuapp.com/report'
+				href: 'https://jt-dashboard-production.herokuapp.com/'
 			},
 		]
 	})
