@@ -66,7 +66,7 @@ export default {
 		whatsNext: [
 			{
 				text: 'Ver Dashboard',
-				href: 'https://jt-dashboard-development.herokuapp.com/'
+				href: 'https://jt-dashboard-production.herokuapp.com/'
 			},
 			{
 				text: 'Github',
@@ -76,7 +76,7 @@ export default {
 		importantLinks: [
 			{
 				text: 'Iniciar Solicitud',
-				href: 'https://jt-dashboard-development.herokuapp.com/
+				href: 'https://jt-dashboard-production.herokuapp.com/'
 			},
 		]
 	})

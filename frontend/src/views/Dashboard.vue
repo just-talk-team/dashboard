@@ -112,12 +112,12 @@ export default {
       
       statistics:[
       {"title": "Todos los Usuarios", value: "6"},
-      //{"title": "Usuarios Premium", value: "0"},
+      {"title": "Usuarios Premium", value: "0"},
       {"title": "Usuarios Free", value: "6"},
       {"title": "Segmentos", value: "upc.edu.pe"},
 
       //{"title": "Usuarios Free", "value": this.counterUserTypeFreemium},
-      {"title": "Usuarios Premium", value: this.counterUserTypePremium},
+      //{"title": "Usuarios Premium", value: this.counterUserTypePremium},
       //{"title": "Total Usuarios", value: this.response.data.count}, 
       //{"title": "Intereses en común", value: this.topicsTalked}, 
       //{"title": "Segmentos", value: this.segments}, 
@@ -161,7 +161,6 @@ export default {
           //gender: this.$data.gender,
         
         const response = await ResultService.sendResult(filterResult);
-        console.log(response)
         StatisticCard = true;
 
         for (let i = 0; i < response.data.count; i++ ){
@@ -175,7 +174,6 @@ export default {
           this.topicsTalked.push(response.data[i].topicsTalked);
           this.segments.push(response.data[i].segments);
         }
-         console.log(this.counterUserTypePremium);
       } catch (error){
         if (this.startDate == "" ||  this.endDate == "" ){
           return confirm("Debe elegir una fecha de inicio y fin de forma obligatoria para continuar con el análisis");
