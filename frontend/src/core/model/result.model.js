@@ -1,11 +1,11 @@
   /*** Modelo para obtener el resultado*/
 export default class Result{ 
     userType;
-    startDate;
-    endDate;
+    startTime;
+    endTime;
     duration;
-    age1;
-    age2;
+    startYears;
+    endYears;
     gender;
 }
 

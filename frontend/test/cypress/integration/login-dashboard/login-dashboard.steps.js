@@ -1,12 +1,12 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
 //TC01
-Given('el usuario que digito su usuario y contraseña correctamente', () => {
-  cy.visit('http://localhost:8086');
-  cy.url().should('contains', 'http://localhost:8086');
+Given('the user that entered your username and password correctly', () => {
+  cy.visit('https://jt-dashboard-development.herokuapp.com');
+  cy.url().should('contains', 'https://jt-dashboard-development.herokuapp.com');
 });
 
-When('de click en el botón -Ingresar-', () => {
+When('he clicks the button -Loggin-', () => {
     cy.visit('/login')
     cy.wait(2000)        
     cy.get('#input-18').type('vivieall')
@@ -14,7 +14,7 @@ When('de click en el botón -Ingresar-', () => {
     cy.get('.info > .v-btn__content').click()
 });
 
-Then('se le mostrará la pantalla de inicio del dashboard', () => {
+Then('he will be shown the dashboard home screen', () => {
     cy.visit('/dashboard')
     cy.wait(2000)
     cy.contains('h1', 'Just Talk Dashboard')
@@ -22,42 +22,42 @@ Then('se le mostrará la pantalla de inicio del dashboard', () => {
 
 
 //TC02
-Given('el usuario ingresa el valor de usuario', () => {
+Given('the user enter the user value', () => {
     cy.visit('/login')
     cy.wait(2000)    
     cy.get('#input-18').type('vivieal')
   });
 
-And('el usuario ingresa valor de contraseña', () => {
+And('the user enters password value', () => {
     cy.wait(2000)    
     cy.get('#input-22').type('Test123')    
 });
   
-When('el usuario da click en el botón -Ingresar-', () => {
+When('the user clicks the button -Loggin-', () => {
     cy.get('.info > .v-btn__content').click()
 });
   
-Then('se muestra una ventana emergente con un mensaje de error', () => {
+Then('a pop-up window is shown with an error message', () => {
 cy.log('Usuario o contraseña incorrecto')
 });
 
 
 //TC03
-Given('el usuario ingresa el valor de usuario', () => {
+Given('the user enter the user value', () => {
     cy.visit('/login')
     cy.wait(2000)    
     cy.get('#input-18').type('vivieal')
   });
 
-And('el usuario ingresa valor de contraseña', () => {
+And('the user enters password value', () => {
     cy.wait(2000)    
     cy.get('#input-22').should('have.value', '');
 });
   
-When('el usuario da click en el botón -Ingresar-', () => {
+When('the user clicks the button -Loggin-', () => {
     cy.get('.info > .v-btn__content').click()
 });
   
-Then('se muestra una ventana emergente con un mensaje de error', () => {
+Then('a pop-up window is shown with an error message', () => {
     cy.log('Verificar que el campo usuario y/o contraseña no estén vacíos')
 });

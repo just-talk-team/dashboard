@@ -1,24 +1,24 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
 //TC04
-Given('el usuario que ha colocado los valores obligatorios de -FechaInicio- y -FechaFin-', () => {
+Given('the user who has placed the mandatory values of -StartDate- and -EndDate-', () => {
   cy.visit('/dashboard');
   cy.url().should('contains', '/dashboard');
 });
 
-And('selecciona opcionalmente algún filtro adicional', () => {
+And('optionally select some additional filter', () => {
     cy.wait(2000)    
     cy.get(':nth-child(3) > select').type('Todos')
 });
 
 
-When('de click sobre el botón -Analizar-', () => {       
-    cy.get(':nth-child(1) > input').type('2020-09-20')
-    cy.get(':nth-child(2) > input').type('2020-09-20')
+When('he clicks on the button -Analyze-', () => {       
+    cy.get('.search-row > :nth-child(1) > input').type('2020-09-20')
+    cy.get('.search-row > :nth-child(2) > input').type('2020-09-21')
     cy.get('.v-card__actions > .v-btn > .v-btn__content').click()
 });
 
-Then('se le mostrará un dashboard con la información solicitada', () => {
+Then('a dashboard will be shown with the requested information', () => {
     cy.contains('h1', 'Just Talk Dashboard')
     cy.wait(2000)
     cy.get(':nth-child(1) > .v-card > .text-center > .display-1').contains('Edad de Usuarios')
@@ -26,43 +26,41 @@ Then('se le mostrará un dashboard con la información solicitada', () => {
 
 
 //TC05
-Given('el usuario no ha colocado los valores obligatorios de -FechaInicio- y -FechaFin-', () => {
-    cy.get(':nth-child(1) > input').type('yyyy-mm-dd')
-    cy.get(':nth-child(2) > input').type('yyyy-mm-dd')
+Given('the user has not placed the mandatory values of -StartDate- and -EndDate-', () => {
+    cy.get('.search-row > :nth-child(1) > input')
+    cy.get('.search-row > :nth-child(2) > input')
   });
 
-And('selecciona solo una fecha -FechaInicio- o -FechaFin-', () => {
+And('select only one date -StartDate- or -EndDate-', () => {
     cy.wait(2000)    
-    cy.get(':nth-child(1) > input').type('09-09-20')
+    cy.get('.search-row > :nth-child(1) > input').type('2020-09-20')
 });
   
-When('de click sobre el botón -Analizar-', () => {
+When('he clicks on the button -Analyze-', () => {
     cy.get('.v-card__actions > .v-btn > .v-btn__content').click()
 });
   
-Then('se muestra una ventana emergente con un mensaje de error', () => {
+Then('a pop-up window is shown with an error message', () => {
     cy.get(':nth-child(2) > .v-card > .text-center > .display-1').contains('Duración de Chats')
 });
 
 
 //TC06
-Given('el usuario que aun no ha colocado los valores obligatorios de -FechaInicio- y -FechaFin-', () => {
+Given('the user who has not yet set the mandatory values of -StartDate- and -EndDate-', () => {
     cy.visit('/dashboard')
     cy.wait(2000)    
-    cy.get(':nth-child(1) > input').type('')
-    cy.get(':nth-child(2) > input').type('')
   });
 
-And('selecciona una -FechaFin- menor a -FechaInicio-', () => {
+And('select an -EndDate- less than -StartDate-', () => {
     cy.wait(2000)    
-    cy.get(':nth-child(1) > input').type('2020-09-22')
-    cy.get(':nth-child(2) > input').type('2020-09-20')
+    cy.get('.search-row > :nth-child(1) > input').type('2020-09-22')
+    cy.get('.search-row > :nth-child(2) > input').type('2020-09-20')
 });
   
-When('de click sobre el botón -Analizar-', () => {
+When('he clicks on the button -Analyze-', () => {
     cy.get('.v-card__actions > .v-btn > .v-btn__content').click()
 });
   
-Then('se muestra una ventana emergente con un mensaje de error', () => {
+Then('a pop-up window is shown with an error message', () => {
     cy.get(':nth-child(3) > .v-card > .text-center > .display-1').contains('Usuarios Registrados')
 });

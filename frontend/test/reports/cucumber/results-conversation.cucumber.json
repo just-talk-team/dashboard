@@ -1,18 +1,18 @@
 [
   {
-    "description": "    Como administrador \n    Quiero poder tener un dashboard con información sobre conversaciones finalizadas\n    Para poder analizar los mismos y poder tomar decisiones de cambio.",
+    "description": "     As administrator\n     I want to be able to have a dashboard with information about finished conversations\n     To be able to analyze them and be able to make change decisions.",
     "keyword": "Feature",
-    "name": "Filtrar resultados de conversaciones",
+    "name": "Filter Conversation Results",
     "line": 1,
-    "id": "filtrar-resultados-de-conversaciones",
+    "id": "filter-conversation-results",
     "tags": [],
     "uri": "results-conversation.feature",
     "elements": [
       {
-        "id": "filtrar-resultados-de-conversaciones;tc04---fecha-inicio-y-fecha-fin-digitados-correctamente",
+        "id": "filter-conversation-results;tc04---start-date-and-end-date-entered-correctly",
         "keyword": "Scenario",
         "line": 11,
-        "name": "TC04 - Fecha Inicio y Fecha Fin digitados correctamente",
+        "name": "TC04 - Start Date and End Date entered correctly",
         "tags": [
           {
             "name": "@TC04",
@@ -25,40 +25,150 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 12,
-            "name": "el usuario que ha colocado los valores obligatorios de -FechaInicio- y -FechaFin-",
+            "name": "the user who has placed the mandatory values of -StartDate- and -EndDate-",
             "result": {
               "status": "passed",
-              "duration": 32584000000
+              "duration": 39254000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 13,
-            "name": "selecciona opcionalmente algún filtro adicional",
+            "name": "optionally select some additional filter",
             "result": {
               "status": "passed",
-              "duration": 3302000000
+              "duration": 3581000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 14,
-            "name": "de click sobre el botón -Analizar-",
+            "name": "he clicks on the button -Analyze-",
             "result": {
               "status": "passed",
-              "duration": 3699000000
+              "duration": 5258000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 15,
-            "name": "se le mostrará un dashboard con la información solicitada",
+            "name": "a dashboard will be shown with the requested information",
             "result": {
               "status": "passed",
-              "duration": 3779000000
+              "duration": 4429000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "filter-conversation-results;tc05---start-date-and-/-or-end-date-not-indicated",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "TC05 - Start Date and / or End Date not indicated",
+        "tags": [
+          {
+            "name": "@TC05",
+            "line": 17
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "the user has not placed the mandatory values of -StartDate- and -EndDate-",
+            "result": {
+              "status": "passed",
+              "duration": 1397000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "select only one date -StartDate- or -EndDate-",
+            "result": {
+              "status": "passed",
+              "duration": 4604000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 21,
+            "name": "he clicks on the button -Analyze-",
+            "result": {
+              "status": "passed",
+              "duration": 4572000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "a pop-up window is shown with an error message",
+            "result": {
+              "status": "passed",
+              "duration": 1329000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "filter-conversation-results;tc06---start-date-and-/-or-end-date-entered-incorrectly",
+        "keyword": "Scenario",
+        "line": 30,
+        "name": "TC06 - Start Date and / or End Date entered incorrectly",
+        "tags": [
+          {
+            "name": "@TC06",
+            "line": 29
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 31,
+            "name": "the user who has not yet set the mandatory values of -StartDate- and -EndDate-",
+            "result": {
+              "status": "passed",
+              "duration": 5570000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "select an -EndDate- less than -StartDate-",
+            "result": {
+              "status": "passed",
+              "duration": 5398000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "he clicks on the button -Analyze-",
+            "result": {
+              "status": "passed",
+              "duration": 4081000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "a pop-up window is shown with an error message",
+            "result": {
+              "status": "passed",
+              "duration": 1238000000
             }
           }
         ]

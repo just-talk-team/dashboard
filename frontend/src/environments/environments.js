@@ -1,4 +1,4 @@
 export let environments = {
-    api : "http://localhost:9191",
-    apiProduction :  "http://localhost:9191/"
+    api : "https://jt-dashboard-development.herokuapp.com",
+    apiProduction :  "https://jt-dashboard-production.herokuapp.com"
 }

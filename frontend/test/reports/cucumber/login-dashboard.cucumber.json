@@ -1,18 +1,18 @@
 [
   {
-    "description": "    Como administrador \n    Quiero poder autenticarme con mi usuario y contraseña  \n    Para hacer uso del dashboard",
+    "description": "     As administrator\n     I want to be able to authenticate with my username and password\n     To use the dashboard",
     "keyword": "Feature",
-    "name": "Autenticarse para usar Dashboard",
+    "name": "Authenticate to use Dashboard",
     "line": 1,
-    "id": "autenticarse-para-usar-dashboard",
+    "id": "authenticate-to-use-dashboard",
     "tags": [],
     "uri": "login-dashboard.feature",
     "elements": [
       {
-        "id": "autenticarse-para-usar-dashboard;tc01---datos-de-usuario-y-password-correctos",
+        "id": "authenticate-to-use-dashboard;tc01---user-data-and-password-correct",
         "keyword": "Scenario",
         "line": 11,
-        "name": "TC01 - Datos de usuario y password correctos",
+        "name": "TC01 - User data and password correct",
         "tags": [
           {
             "name": "@TC01",
@@ -25,39 +25,39 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 12,
-            "name": "el usuario que digito su usuario y contraseña correctamente",
+            "name": "the user that entered your username and password correctly",
             "result": {
               "status": "passed",
-              "duration": 1823000000
+              "duration": 9843000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 13,
-            "name": "de click en el botón -Ingresar-",
+            "name": "he clicks the button -Loggin-",
             "result": {
               "status": "passed",
-              "duration": 8068000000
+              "duration": 13967000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 14,
-            "name": "se le mostrará la pantalla de inicio del dashboard",
+            "name": "he will be shown the dashboard home screen",
             "result": {
               "status": "passed",
-              "duration": 3826000000
+              "duration": 5527000000
             }
           }
         ]
       },
       {
-        "id": "autenticarse-para-usar-dashboard;tc02---datos-de-usuario-y-password-incorrectos",
+        "id": "authenticate-to-use-dashboard;tc02---incorrect-username-and-password",
         "keyword": "Scenario",
         "line": 17,
-        "name": "TC02 - Datos de usuario y password incorrectos",
+        "name": "TC02 - Incorrect username and password",
         "tags": [
           {
             "name": "@TC02",
@@ -70,49 +70,49 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 18,
-            "name": "el usuario ingresa el valor de usuario",
+            "name": "the user enter the user value",
             "result": {
               "status": "passed",
-              "duration": 4313000000
+              "duration": 6567000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 19,
-            "name": "el usuario ingresa valor de contraseña",
+            "name": "the user enters password value",
             "result": {
               "status": "passed",
-              "duration": 3395000000
+              "duration": 3688000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 20,
-            "name": "el usuario da click en el botón -Ingresar-",
+            "name": "the user clicks the button -Loggin-",
             "result": {
               "status": "passed",
-              "duration": 1067000000
+              "duration": 1081000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 21,
-            "name": "se muestra una ventana emergente con un mensaje de error",
+            "name": "a pop-up window is shown with an error message",
             "result": {
               "status": "passed",
-              "duration": 63000000
+              "duration": 14000000
             }
           }
         ]
       },
       {
-        "id": "autenticarse-para-usar-dashboard;tc03---datos-de-usuario-y/o-password-incorrectos",
+        "id": "authenticate-to-use-dashboard;tc03---incorrect-user-or-password-data.",
         "keyword": "Scenario",
         "line": 29,
-        "name": "TC03 - Datos de usuario y/o password incorrectos",
+        "name": "TC03 - Incorrect user or password data.",
         "tags": [
           {
             "name": "@TC03",
@@ -125,40 +125,40 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 30,
-            "name": "el usuario ingresa el valor de usuario",
+            "name": "the user enter the user value",
             "result": {
               "status": "passed",
-              "duration": 4418000000
+              "duration": 5615000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 31,
-            "name": "el usuario ingresa valor de contraseña",
+            "name": "the user enters password value",
             "result": {
               "status": "passed",
-              "duration": 3336000000
+              "duration": 3458000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 32,
-            "name": "el usuario da click en el botón -Ingresar-",
+            "name": "the user clicks the button -Loggin-",
             "result": {
               "status": "passed",
-              "duration": 1052000000
+              "duration": 1023000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 33,
-            "name": "se muestra una ventana emergente con un mensaje de error",
+            "name": "a pop-up window is shown with an error message",
             "result": {
               "status": "passed",
-              "duration": 48000000
+              "duration": 17000000
             }
           }
         ]
