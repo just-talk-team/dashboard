@@ -3,7 +3,6 @@ package com.dashboardjusttalk.Dto.converter;
 import com.dashboardjusttalk.Dto.ResultInsertionDto;
 import com.dashboardjusttalk.model.Result;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,9 +19,8 @@ public class ResultInsertionDtoConverter {
         resultInsertionDto.setSegments(result.getSegments());
         resultInsertionDto.setUser_type_qualified_user(result.getUserTypeQualifiedUser());
         resultInsertionDto.setBirthdate_qualified_user(result.getBirthdateQualifiedUser());
-        resultInsertionDto.setTopics_hear_qualified_user(result.getTopicsHearQualifiedUser()
-                );
-        resultInsertionDto.setTopics__talk_qualified_user(result.getTopicsTalkQualifiedUser());
+        resultInsertionDto.setTopics_hear_qualified_user(result.getTopicsHearQualifiedUser());
+        resultInsertionDto.setTopics_talk_qualified_user(result.getTopicsTalkQualifiedUser());
         resultInsertionDto.setStart_time(result.getStartTime());
         resultInsertionDto.setEnd_time(result.getEndTime());
         resultInsertionDto.setBadges_awarded(result.getBadgesAwarded());
@@ -39,7 +37,7 @@ public class ResultInsertionDtoConverter {
         result.setUserTypeQualifiedUser(resultInsertionDto.getUser_type_qualified_user());
         result.setBirthdateQualifiedUser(resultInsertionDto.getBirthdate_qualified_user());
         result.setTopicsHearQualifiedUser(resultInsertionDto.getTopics_hear_qualified_user());
-        result.setTopicsTalkQualifiedUser(resultInsertionDto.getTopics__talk_qualified_user());
+        result.setTopicsTalkQualifiedUser(resultInsertionDto.getTopics_talk_qualified_user());
         result.setStartTime(resultInsertionDto.getStart_time());
         result.setEndTime(resultInsertionDto.getEnd_time());
         result.setBadgesAwarded(resultInsertionDto.getBadges_awarded());
